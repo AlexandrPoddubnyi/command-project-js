@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { KEY, BY_TRENDS, BY_SEARCH, BY_ID, renderPoster } from './api-keys';
 import { renderCollection, gallery } from './render-trends';
+export { fetchTrendMovies };
 
 // const form = document.querySelector('.search-form')
 const button = document.querySelector('.next');

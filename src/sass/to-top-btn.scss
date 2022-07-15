@@ -1,0 +1,37 @@
+.to-top-btn {
+  display: block;
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: bold;
+
+  width: 60px;
+  height: 60px;
+
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+
+  color: rgba(3, 3, 3, 0.6);
+  background-color: rgba(255, 107, 1, 0.6);
+
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+
+  transition: box-shadow 300ms linear, color 300ms linear,
+    background-color 300ms linear;
+}
+
+.to-top-btn.is-hidden {
+  display: none;
+}
+
+.to-top-btn:hover,
+.to-top-btn:focus {
+  color: #030303;
+  background-color: #ff6b01;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.23);
+  outline: none;
+}
