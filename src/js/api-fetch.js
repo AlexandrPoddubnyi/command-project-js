@@ -3,8 +3,8 @@ import { KEY, BY_TRENDS, BY_SEARCH, BY_ID, renderPoster } from './api-keys';
 import { renderCollection, gallery } from './render-trends';
 
 // const form = document.querySelector('.search-form')
-// const button = document.querySelector('.next');
-// button.addEventListener('click', more);
+const button = document.querySelector('.next');
+button.addEventListener('click', more);
 // form.addEventListener('submit', fetchResolved);
 let page = 1;
 
@@ -52,10 +52,10 @@ fetchTrendMovies().then(data => {
 });
 
 // Проверка пагинации 
-// function more() {
-//   page += 1;
-//   fetchTrendMovies().then(data => {
-//     renderCollection(data);
-//     console.log(data);
-//   });
-// }
+function more() {
+  page += 1;
+  fetchTrendMovies().then(data => {
+    renderCollection(data);
+    console.log(data);
+  });
+}
