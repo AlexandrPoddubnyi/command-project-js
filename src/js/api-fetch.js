@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { KEY, BY_TRENDS, BY_SEARCH, BY_ID, renderPoster } from './api-keys';
 import { renderCollection, gallery } from './render-trends';
-export { fetchTrendMovies };
+export { fetchTrendMovies, fetchBySearchMovies};
 
 // const form = document.querySelector('.search-form')
 const button = document.querySelector('.next');
@@ -10,7 +10,7 @@ button.addEventListener('click', more);
 let page = 1;
 
 // Fetch полной инф-ы по трендам
-async function fetchTrendMovies() {
+async function fetchTrendMovies(page) {
   try {
     const { data } = await axios.get(
       `${BY_TRENDS}?api_key=${KEY}&page=${page}`
