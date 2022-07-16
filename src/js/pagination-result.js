@@ -11,7 +11,7 @@ async function onPageLoad() {
   try {
     const movies = await fetchTrendMovies(page = 1);
     console.log(movies);
-    renderCollection(movies);
+//     renderCollection(movies);
 
     const instance = createPagination();
     instance.setItemsPerPage(20);
