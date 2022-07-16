@@ -1,16 +1,13 @@
 import axios from 'axios';
-import { KEY, BY_TRENDS, BY_SEARCH, BY_ID, renderPoster } from './api-keys';
-import { renderCollection, gallery } from './render-trends';
-export { fetchTrendMovies };
+import { KEY, DEFAULT_URL, BY_TRENDS, BY_SEARCH, BY_ID, renderPoster } from './api-keys';
+import { renderCollection, } from './render-trends';
+export { fetchTrendMovies, fetchBySearchMovies, fetchByID };
 
-// const form = document.querySelector('.search-form')
-const button = document.querySelector('.next');
-button.addEventListener('click', more);
-// form.addEventListener('submit', fetchResolved);
-let page = 1;
+
+
 
 // Fetch полной инф-ы по трендам
-async function fetchTrendMovies() {
+async function fetchTrendMovies( page = 1) {
   try {
     const { data } = await axios.get(
       `${BY_TRENDS}?api_key=${KEY}&page=${page}`
@@ -22,7 +19,7 @@ async function fetchTrendMovies() {
 }
 
   //Fetch by Search
-  async function fetchBySearchMovies(formInput, page) {
+  async function fetchBySearchMovies(formInput, page = 1) {
     try {
       const { data } = await axios.get(
         `${BY_SEARCH}?api_key=${KEY}&query=${formInput}&page=${page}`
@@ -33,18 +30,34 @@ async function fetchTrendMovies() {
     }
   }
 
+  async function fetchByID(id) {
+    try {
+      const { data } = await axios.get(
+        `${BY_ID}${id}?api_key=${KEY}`
+      );
+      return data;
+    } catch (error) {
+      console.error('ERROR');
+    }
+  }
 
-// //Проверка поиска.
-// function fetchResolved(event) {
-//   event.preventDefault();
-//   page = 1;
-//   formInput = form.elements.searchQuery.value.trim();
-//   fetchBySearchMovies(formInput).then(data => {
-//     gallery.innerHTML = '';
-//     renderCollection(data);
-//     console.log(data.results);
-//   });
-// }
+async function getGenres() {
+   try {
+      const genres = await axios.get(
+        `https://api.themoviedb.org/3/genre/movie/list?api_key=23b145ee574a18aa201c7296bc0e9b2b&language=en-US`
+      );
+      return genres.data.genres;
+    } catch (error) {
+      console.error('ERROR',error);
+    }
+};
+
+getGenres().then(genres => {
+  console.log(genres);
+});
+
+
+
 
 // Проверка работаспособности рендера
 fetchTrendMovies().then(data => {
@@ -52,11 +65,11 @@ fetchTrendMovies().then(data => {
   console.log(data.results);
 });
 
-// Проверка пагинации 
-function more() {
-  page += 1;
-  fetchTrendMovies().then(data => {
-    renderCollection(data);
-    console.log(data);
-  });
-}
+// // Проверка пагинации 
+// function more() {
+//   page += 1;
+//   fetchTrendMovies().then(data => {
+//     renderCollection(data);
+//     console.log(data);
+//   });
+// }
