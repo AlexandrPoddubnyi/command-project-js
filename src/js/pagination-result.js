@@ -9,7 +9,7 @@ window.addEventListener('load', onPageLoad);
 // Пагінація і налаштування при завантаженні головної сторінки
 async function onPageLoad() {
   try {
-    const movies = await fetchTrendMovies(page = 1);
+    const movies = await fetchTrendMovies();
     console.log(movies);
 //     renderCollection(movies);
 
