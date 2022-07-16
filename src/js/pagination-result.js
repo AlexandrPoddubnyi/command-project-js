@@ -1,6 +1,6 @@
 import { fetchTrendMovies, fetchBySearchMovies } from './api-fetch';
 import createPagination from './pagination';
-import { renderCollection, gallery } from './render-trends';
+import { renderCollection } from './render-trends';
 
 const moviesList = document.querySelector('.cards');
 
@@ -11,7 +11,7 @@ async function onPageLoad() {
   try {
     const movies = await fetchTrendMovies(page = 1);
     console.log(movies);
-    renderCollection(movies);
+    // renderCollection(movies);
 
     const instance = createPagination();
     instance.setItemsPerPage(20);
