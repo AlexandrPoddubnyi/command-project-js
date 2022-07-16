@@ -1,4 +1,4 @@
-const genres = {
+export const genres = {
   genres: [
     { id: 28, name: 'Action' },
     { id: 12, name: 'Adventure' },
@@ -21,12 +21,3 @@ const genres = {
     { id: 37, name: 'Western' },
   ],
 };
-function createGenresFromTrend(genres) {
-  const gens = genres
-    .map(id => genres.filter(element => element.id === id))
-    .slice(0, 3)
-        .flat();
-    console.log(gens)
-}
-createGenresFromTrend();
-// const g = createGenresFromTrend(genres);

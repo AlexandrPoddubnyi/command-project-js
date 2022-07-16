@@ -1,0 +1,33 @@
+.footer {
+
+  color: #545454;
+  background-color: #f7f7f7;
+}
+
+.footer-section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.footer-text__developed {
+	display: flex;
+	justify-content: center;
+	align-items: baseline;
+}
+
+.footer-icon {
+	margin: 0px 10px;
+}
+
+@media screen and (min-width: 320px) {
+	.footer-text {
+		padding-top: 30px;
+		padding-bottom: 10px;
+	}
+	.footer-text__developed {
+		padding-bottom: 30px;
+	}
+
+
+}
