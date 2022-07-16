@@ -1,6 +1,7 @@
 import { renderPoster } from "./api-keys";
+import { genres } from "./genres";
+const obj1 = genres;
 export const cards = document.querySelector('.cards');
-// const form = document.querySelector('.search-form');
 export function renderCollection(movie) {
   const markup = movie.results
     .map(movie => {
@@ -20,7 +21,9 @@ export function renderCollection(movie) {
        <p>${overview}</p>
        <p>${vote_average.toFixed(1)}</p>
        <p>${release_date.slice(0, 4)}</p>
-       <p>${genre_ids}</p>
+       <p>${
+         genre_ids
+       }</p>
         `;
     })
     .join('');
