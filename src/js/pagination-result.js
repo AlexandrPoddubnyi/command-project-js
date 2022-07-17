@@ -1,6 +1,6 @@
 import { fetchTrendMovies, fetchBySearchMovies } from './api-fetch';
 import createPagination from './pagination';
-import { renderCollection, gallery } from './render-trends';
+import { renderTrendCollection, gallery } from './render-trends';
 
 const moviesList = document.querySelector('.cards');
 
@@ -31,7 +31,7 @@ async function loadMoreTrendMovies(currentPage) {
   try {
     const movies = await fetchTrendMovies(currentPage);
     clearPreviousResults();
-    renderCollection(movies);
+    renderTrendCollection(movies);
     console.log(movies);
   }
   catch (error) { console.log(error); }
@@ -43,7 +43,7 @@ async function loadSearchMovies() {
   try {
     const movies = await fetchBySearchMovies(searchQuery, page = 1);
     console.log(movies);
-    renderCollection(movies);
+    renderTrendCollection(movies);
 
     const instance = createPagination();
     instance.setItemsPerPage(20);
@@ -63,7 +63,7 @@ async function loadMoreSearchMovies(currentPage) {
   try {
     const searchMovies = await fetchBySearchMovies(searchQuery, currentPage);
     clearPreviousResults();
-    renderCollection(searchMovies);
+    renderTrendCollection(searchMovies);
     console.log(searchMovies);
   }
   catch (error) { console.log(error); }
