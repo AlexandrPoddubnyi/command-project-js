@@ -2,7 +2,7 @@ import { fetchTrendMovies, fetchBySearchMovies } from './api-fetch';
 import createPagination from './pagination';
 import { renderTrendCollection, gallery } from './render-trends';
 
-const moviesList = document.querySelector('.cards');
+const moviesList = document.querySelector('.cards-container');
 
 window.addEventListener('load', onPageLoad);
 
