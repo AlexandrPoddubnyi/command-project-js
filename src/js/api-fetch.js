@@ -32,31 +32,14 @@ async function fetchTrendMovies( page = 1) {
 
   async function fetchByID(id) {
     try {
-      const { data } = await axios.get(`${BY_ID}${759175}?api_key=${KEY}`);
+      const { data } = await axios.get(`${BY_ID}${507086}?api_key=${KEY}`);
       return data;
     } catch (error) {
       console.error('ERROR');
     }
   }
 
-async function getGenres() {
-   try {
-      const genres = await axios.get(
-        `https://api.themoviedb.org/3/genre/movie/list?api_key=23b145ee574a18aa201c7296bc0e9b2b&language=en-US`
-      );
-      return genres.data.genres;
-    } catch (error) {
-      console.error('ERROR',error);
-    }
-};
 
-getGenres().then(genres => {
-  console.log("Genres" ,genres);
-});
-
-
-
-507086
 // Проверка работаспособности рендера
 // fetchByID().then(data => {
 //   renderOneFilm(data)
