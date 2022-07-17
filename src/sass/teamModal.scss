@@ -1,0 +1,48 @@
+.team-modal-wraper{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: transparent;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    }
+.team-modal{
+    width: 900px;
+    background-color: #ffffff;
+    }
+.team__title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+.team__list{
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    grid-template-columns: repeat(5, 180px);
+    }
+.team__element{
+    display: flex;
+    justify-content: center;
+    }
+.team__icon{
+    width: 92px;
+    height: 92px;
+    }
+.team__element--main{
+    grid-column-start: 1;
+    grid-column-end: 6; 
+    grid-row-start: 1;
+    grid-row-end: 3;
+    }
+.social__icon{
+    width: 32px;
+    height: 32px;
+    }
+.teammate__socials{
+    display: grid;
+    grid-tempalte-columns: repeat(1, 2fr); 
+    }

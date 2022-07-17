@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { KEY, DEFAULT_URL, BY_TRENDS, BY_SEARCH, BY_ID, renderPoster } from './api-keys';
-import { renderCollection, } from './render-trends';
+import { renderTrendCollection, renderOneFilm } from './render-trends';
 export { fetchTrendMovies, fetchBySearchMovies, fetchByID };
 
 
@@ -32,39 +32,23 @@ async function fetchTrendMovies( page = 1) {
 
   async function fetchByID(id) {
     try {
-      const { data } = await axios.get(
-        `${BY_ID}${id}?api_key=${KEY}`
-      );
+      const { data } = await axios.get(`${BY_ID}${507086}?api_key=${KEY}`);
       return data;
     } catch (error) {
       console.error('ERROR');
     }
   }
 
-async function getGenres() {
-   try {
-      const genres = await axios.get(
-        `https://api.themoviedb.org/3/genre/movie/list?api_key=23b145ee574a18aa201c7296bc0e9b2b&language=en-US`
-      );
-      return genres.data.genres;
-    } catch (error) {
-      console.error('ERROR',error);
-    }
-};
-
-getGenres().then(genres => {
-  console.log(genres);
-});
-
-
-
 
 // Проверка работаспособности рендера
+// fetchByID().then(data => {
+//   renderOneFilm(data)
+//   console.log("byID",data);
+// });
 fetchTrendMovies().then(data => {
-  renderCollection(data);
-  console.log(data.results);
+  renderTrendCollection(data);
+  console.log('byTrends', data);
 });
-
 // // Проверка пагинации 
 // function more() {
 //   page += 1;
