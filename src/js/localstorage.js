@@ -103,11 +103,3 @@ const obj2 = {
 
 //obj1 id507086
 //obj2 id438148
-
-// export const LsWatched = new LocalStorageObject();
-
-//  {
-//   theme: "dark",
-//   isAuthenticated: true,
-//   options: [1, 2, 3],
-// }
