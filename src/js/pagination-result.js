@@ -4,7 +4,7 @@ import { renderTrendCollection } from './render-trends';
 
 const moviesList = document.querySelector('.cards-container');
 const searchForm = document.getElementById('search-form');
-const searchError = document.querySelector('.search__error');
+const searchError = document.querySelector('.header__search-error');
 
 window.addEventListener('load', onPageLoad);
 
