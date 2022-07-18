@@ -18,6 +18,7 @@ async function fetchTrendMovies( page = 1) {
   }
 }
 
+
   //Fetch by Search
   async function fetchBySearchMovies(formInput, page = 1) {
     try {
