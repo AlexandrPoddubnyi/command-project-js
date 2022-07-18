@@ -1,3 +1,4 @@
+// | <span class="card-item__rating">${vote_average.toFixed(1)}
 import { renderPoster } from './api-keys';
 import { genres } from './genres.json';
 export const cards = document.querySelector('.cards-container');
@@ -22,7 +23,7 @@ export function renderTrendCollection(movie) {
           <p class="card-item__desc"> ${movieGenresList} | ${release_date.slice(
         0,
         4
-      )} | <span class="card-item__rating">${vote_average.toFixed(1)}</p>
+      )} </p>
       </li>
       </ul>`;
     })
