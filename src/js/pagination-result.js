@@ -46,13 +46,9 @@ function onSearchFormSubmit(e) {
   document.querySelector('.tui-pagination').innerHTML = "";
 
   const searchQuery = e.currentTarget.elements.searchQuery.value;
-  if (searchQuery.trim() === "") {
-    searchError.classList.remove('is-hidden');
-    setTimeout(() => {
-      searchError.classList.add('is-hidden');
-    }, 5000);
-  }
   
+  checkQueryError(searchQuery);
+
   clearMoviesList();
 
   loadSearchMovies(searchQuery);
@@ -94,7 +90,6 @@ async function loadMoreSearchMovies(searchQuery, currentPage) {
 function clearPreviousResults() {
   if (moviesList.hasChildNodes() === true) {
     moviesList.innerHTML = "";
-    return;
   }
 }
 function clearMoviesList() {
@@ -111,4 +106,13 @@ function checkSearchError(movies) {
   setTimeout(() => {
     searchError.classList.add('is-hidden');
   }, 5000);
+}
+
+function checkQueryError(searchQuery) {
+  if (searchQuery.trim() === "") {
+    searchError.classList.remove('is-hidden');
+    setTimeout(() => {
+      searchError.classList.add('is-hidden');
+    }, 5000);
+  }
 }
