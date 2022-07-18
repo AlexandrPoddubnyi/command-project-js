@@ -46,7 +46,7 @@ class LocalStorageInstance {
     return this.items.find(item => item.id === id) ? true : false;
   }
 }
-
+// Створюємо і одночасно експортуємо інстанс для керування списком "Переглянуті". В аргумент передаємо ім'я властивості в Local Storage.
 export const LsWatched = new LocalStorageInstance('watchedList');
 
 /* Tests */
