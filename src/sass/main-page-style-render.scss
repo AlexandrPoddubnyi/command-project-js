@@ -1,0 +1,118 @@
+.cards-container {
+    font-family: Roboto;
+    margin-top: 20px;
+    width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        width: 768px;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 60px;
+        padding-left: 32px;
+        padding-right: 32px;
+
+        // outline: 2px solid blue;
+    };
+
+    @media screen and (min-width: 1280px) {
+        width: 1280px;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 60px;
+        padding-left: 31px;
+        padding-right: 31px;
+
+        // outline: 2px solid rgb(0, 255, 98);
+    };
+};
+
+.card-list {
+    margin-top: 0px;
+    margin-bottom: 20px;
+    padding: 0;
+
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        margin-right: 32px;
+    };
+
+    @media screen and (min-width: 1280px) {
+        margin-right: 16px;
+    };
+};
+
+.card-list:nth-child(2n) {
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        margin-right: 0px;
+    };
+};
+
+.card-list:nth-child(3n) {
+    @media screen and (min-width: 1280px) {
+        margin-right: 0px;
+    };
+};
+
+.card-item {
+    margin-left: auto;
+    margin-right: auto;
+    width: 280px;
+    height: 443px;
+
+    // outline: 2px solid tomato;
+
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        width: 336px;
+        height: 494px;
+    };
+
+    @media screen and (min-width: 1280px) {
+        width: 395px;
+        height: 634px;
+    };
+};
+
+.card-item__img {
+    margin-bottom: 8px;
+
+    width: 280px;
+    height: 402px;
+
+    border-radius: 5px;
+
+    @media screen and (min-width: 768px) and (max-width: 1280px) {
+        width: 336px;
+        height: 455px;
+    };
+
+    @media screen and (min-width: 1280px) {
+        width: 395px;
+        height: 574px;
+    };
+};
+
+.card-item__tittle {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    text-transform: uppercase;
+    color: #000000;
+
+    @media screen and (min-width: 1280px) {
+        font-size: 20px;
+        line-height: 24px;
+    };
+};
+
+.card-item__desc {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14px;
+    color: #FF6B08;
+
+    @media screen and (min-width: 1280px) {
+        font-size: 20px;
+        line-height: 24px;
+    };
+};

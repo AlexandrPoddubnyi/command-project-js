@@ -17,9 +17,7 @@ async function fetchTrendMovies(page = 1) {
       `${BY_TRENDS}?api_key=${KEY}&page=${page}`
     );
     return data;
-  } catch (error) {
-    console.error('ERROR');
-  }
+  } catch (error) {}
 }
 
 //Fetch by Search
@@ -29,34 +27,19 @@ async function fetchBySearchMovies(formInput, page = 1) {
       `${BY_SEARCH}?api_key=${KEY}&query=${formInput}&page=${page}`
     );
     return data;
-  } catch (error) {
-    console.error('ERROR');
-  }
+  } catch (error) {}
 }
 
 async function fetchByID(id) {
   try {
-    const { data } = await axios.get(`${BY_ID}${507086}?api_key=${KEY}`);
+    const { data } = await axios.get(`${BY_ID}${id}?api_key=${KEY}`);
     return data;
-  } catch (error) {
-    console.error('ERROR');
-  }
+  } catch (error) {}
 }
 
 // Проверка работаспособности рендера
-// fetchByID().then(data => {
-//   renderOneFilm(data)
-//   console.log("byID",data);
-// });
+
 fetchTrendMovies().then(data => {
   renderTrendCollection(data);
   console.log('byTrends', data);
 });
-// // Проверка пагинации
-// function more() {
-//   page += 1;
-//   fetchTrendMovies().then(data => {
-//     renderCollection(data);
-//     console.log(data);
-//   });
-// }
