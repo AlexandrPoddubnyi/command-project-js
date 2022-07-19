@@ -24,8 +24,9 @@ async function onPageLoad() {
       window.scrollTo({ top: 220, behavior: 'smooth' });
       loadMoreTrendMovies(currentPage);
     });
+  } catch (error) {
+    console.log(error);
   }
-  catch (error) { console.log(error); };
 }
 
 async function loadMoreTrendMovies(currentPage) {
@@ -33,8 +34,9 @@ async function loadMoreTrendMovies(currentPage) {
     const movies = await fetchTrendMovies(currentPage);
     clearPreviousResults();
     renderTrendCollection(movies);
+  } catch (error) {
+    console.log(error);
   }
-  catch (error) { console.log(error); }
 }
 
 // Налаштування пагінації для пошуку фільмів та обробка сабміту форми пошуку
@@ -43,10 +45,10 @@ searchForm.addEventListener('submit', onSearchFormSubmit);
 
 function onSearchFormSubmit(e) {
   e.preventDefault();
-  document.querySelector('.tui-pagination').innerHTML = "";
+  document.querySelector('.tui-pagination').innerHTML = '';
 
   const searchQuery = e.currentTarget.elements.searchQuery.value;
-  
+
   checkQueryError(searchQuery);
 
   clearMoviesList();
@@ -73,8 +75,9 @@ async function loadSearchMovies(searchQuery) {
       window.scrollTo({ top: 220, behavior: 'smooth' });
       loadMoreSearchMovies(searchQuery, currentPage);
     });
+  } catch (error) {
+    console.log(error);
   }
-  catch (error) { console.log(error); };
 }
 
 async function loadMoreSearchMovies(searchQuery, currentPage) {
@@ -83,17 +86,18 @@ async function loadMoreSearchMovies(searchQuery, currentPage) {
     clearPreviousResults();
     renderTrendCollection(searchMovies);
     console.log(searchMovies);
+  } catch (error) {
+    console.log(error);
   }
-  catch (error) { console.log(error); }
 }
 
 function clearPreviousResults() {
   if (moviesList.hasChildNodes() === true) {
-    moviesList.innerHTML = "";
+    moviesList.innerHTML = '';
   }
 }
 function clearMoviesList() {
-  moviesList.innerHTML = "";
+  moviesList.innerHTML = '';
 }
 
 function checkSearchError(movies) {
@@ -109,7 +113,7 @@ function checkSearchError(movies) {
 }
 
 function checkQueryError(searchQuery) {
-  if (searchQuery.trim() === "") {
+  if (searchQuery.trim() === '') {
     searchError.classList.remove('is-hidden');
     setTimeout(() => {
       searchError.classList.add('is-hidden');
