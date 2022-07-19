@@ -4,6 +4,7 @@
 import { renderPoster } from './api-keys';
 import { genres } from './genres.json';
 export const cards = document.querySelector('.cards-container');
+
 export function renderTrendCollection(movie) {
   const markup = movie.results
     .map(movie => {
@@ -23,8 +24,11 @@ export function renderTrendCollection(movie) {
       const movieGenresList = getMovieGenresList(genre_ids).join(', ');
        return `<ul class="card-list">
       <li class="card-item">
-       <img  class="card-item__img" src="${renderPoster}${poster_path}" 
-  onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'" alt="${title}" loading="lazy" data-id="${id} "/>
+       <img  class="card-item__img" src="${renderPoster}${poster_path}"
+        alt="${title}" loading="lazy" data-id="${id}"
+       onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'"
+        
+   "/>
          <h2 class="card-item__tittle"  data-id="${id}">${title}</h2>
           <p class="card-item__desc"> ${movieGenresList} | ${realeaseYear} </p>
       </li>
@@ -61,9 +65,9 @@ export function renderOneFilm(...movie) {
          <h2 class="card-item__tittle--byId"  data-id="${id}">${title}</h2>
          <div class="card-info__wrapper>
          <p class="card-info__text>Vote / Votes <span class="card-info__avarge">${vote_average} / </span><span class="card-info__count">${vote_count}</span></p>
-           <p class="card-info__text>Popularity<span class="pop-text">${popularity
+           <p class="card-info__text">Popularity <span class="pop-text">${popularity
              .toString()
-             .slice(0, -5)}${popularity.toString().slice(4, -2)}</p>
+             .slice(0, -4)}</p>
              <p class="card-info__text>Original Title <span class="orig-title">${original_title}</span></p>
                <p class="card-info__text">Genres: <span class="genres-details">${genres.map(gen => gen.name)}</span></p>
           <p class="card-info__desc">About
@@ -77,7 +81,7 @@ export function renderOneFilm(...movie) {
     })
     .join('');
 
-  cards.insertAdjacentHTML('beforeend', markupOneFilm);
+  cards.insertAdjacentHTML('beforebegin', markupOneFilm);
 }
   
 
@@ -94,3 +98,5 @@ function getMovieGenresList(genresIdsList) {
   }
   return movieGenres;
 }
+
+

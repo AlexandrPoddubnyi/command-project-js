@@ -14,7 +14,6 @@ async function fetchTrendMovies( page = 1) {
     );
     return data;
   } catch (error) {
-    console.error('ERROR');
   }
 }
 
@@ -27,7 +26,6 @@ async function fetchTrendMovies( page = 1) {
       );
       return data;
     } catch (error) {
-      console.error('ERROR');
     }
   }
 
@@ -36,7 +34,6 @@ async function fetchTrendMovies( page = 1) {
       const { data } = await axios.get(`${BY_ID}${id}?api_key=${KEY}`);
       return data;
     } catch (error) {
-      console.error('ERROR');
     }
   }
 
@@ -47,11 +44,3 @@ fetchTrendMovies().then(data => {
   renderTrendCollection(data);
   console.log('byTrends', data);
 });
-// // Проверка пагинации 
-// function more() {
-//   page += 1;
-//   fetchTrendMovies().then(data => {
-//     renderCollection(data);
-//     console.log(data);
-//   });
-// }
