@@ -33,7 +33,7 @@ async function fetchTrendMovies( page = 1) {
 
   async function fetchByID(id) {
     try {
-      const { data } = await axios.get(`${BY_ID}${507086}?api_key=${KEY}`);
+      const { data } = await axios.get(`${BY_ID}${id}?api_key=${KEY}`);
       return data;
     } catch (error) {
       console.error('ERROR');
@@ -42,10 +42,7 @@ async function fetchTrendMovies( page = 1) {
 
 
 // Проверка работаспособности рендера
-// fetchByID().then(data => {
-//   renderOneFilm(data)
-//   console.log("byID",data);
-// });
+
 fetchTrendMovies().then(data => {
   renderTrendCollection(data);
   console.log('byTrends', data);

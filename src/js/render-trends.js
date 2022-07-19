@@ -1,3 +1,6 @@
+// | <span class="card-item__rating">${vote_average.toFixed(
+//          1
+//        )}
 import { renderPoster } from './api-keys';
 import { genres } from './genres.json';
 export const cards = document.querySelector('.cards-container');
@@ -13,16 +16,17 @@ export function renderTrendCollection(movie) {
         vote_average,
         release_date,
       } = movie;
+      let realeaseYear = '';
+      if (typeof release_date !== 'undefined') {
+        realeaseYear = release_date.slice(0, 4);
+      }
       const movieGenresList = getMovieGenresList(genre_ids).join(', ');
-      return `<ul class="card-list">
+       return `<ul class="card-list">
       <li class="card-item">
        <img  class="card-item__img" src="${renderPoster}${poster_path}" 
   onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'" alt="${title}" loading="lazy" data-id="${id} "/>
          <h2 class="card-item__tittle"  data-id="${id}">${title}</h2>
-          <p class="card-item__desc"> ${movieGenresList} | ${release_date.slice(
-        0,
-        4
-      )} | <span class="card-item__rating">${vote_average.toFixed(1)}</p>
+          <p class="card-item__desc"> ${movieGenresList} | ${realeaseYear} </p>
       </li>
       </ul>`;
     })
