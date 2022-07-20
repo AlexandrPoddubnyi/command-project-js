@@ -3,7 +3,7 @@
 //        )}
 import { renderPoster } from './api-keys';
 import { genres } from './genres.json';
-export const cards = document.querySelector('.cards-container');
+export const cards = document.querySelector('.card-list');
 
 export function renderTrendCollection(movie) {
   const markup = movie.results
@@ -22,17 +22,17 @@ export function renderTrendCollection(movie) {
         realeaseYear = release_date.slice(0, 4);
       }
       const movieGenresList = getMovieGenresList(genre_ids).join(', ');
-       return `<ul class="card-list">
+       return `
       <li class="card-item">
        <img  class="card-item__img" src="${renderPoster}${poster_path}"
         alt="${title}" loading="lazy" data-id="${id}"
        onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'"
         
    "/>
-         <h2 class="card-item__tittle"  data-id="${id}">${title}</h2>
+         <h2 class="card-item__title"  data-id="${id}">${title}</h2>
           <p class="card-item__desc"> ${movieGenresList} | ${realeaseYear} </p>
       </li>
-      </ul>`;
+      `;
     })
     .join('');
 
