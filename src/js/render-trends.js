@@ -27,7 +27,7 @@ export function renderTrendCollection(movie) {
         alt="${title}" loading="lazy" data-id="${id}"
        onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'"
         
-   "/><div class="render-info">
+   "/><div class="movie-meta">
          <h2 class="card-item__title"  data-id="${id}">${title}</h2>
           <p class="card-item__desc"> ${movieGenresList} | ${realeaseYear} </p>
       </div></li>

@@ -10,7 +10,7 @@ cards.addEventListener('click', oneCardRender)
 function oneCardRender(event) {
   if (
     !event.target.classList.contains('card-item__img') &&
-    !event.target.classList.contains('card-item__tittle')
+    !event.target.classList.contains('card-item__title')
   ) {
     return;
   }
