@@ -38,20 +38,8 @@ function oneCardRender(event) {
     });
 
   });
-//  fetchByID(movieId).then(data => {
-//    renderOneFilm(data);
-   
-   
-//     // console.log('byID', data);
-//  });
-  // addBtn.addEventListener('click', saveAddInStorage);
+
 };
 
 
 
-// function saveAddInStorage() {
-//   fetchByID(movieId).then(data => {
-//     movieData = JSON.stringify(data)
-//     localStorage.setItem(Data, movieData.results);
-//   })
-// }
