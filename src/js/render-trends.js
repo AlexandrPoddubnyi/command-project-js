@@ -19,7 +19,11 @@ export function renderTrendCollection(movie) {
       let realeaseYear = '';
       if (typeof release_date !== 'undefined') {
         realeaseYear = release_date.slice(0, 4);
-      }
+      };
+const slicedTitle = textSlicer(title, 35);
+     
+      
+   
       const movieGenresList = getGenres(genre_ids).join(', ');
        return `
       <li class="card-item">
@@ -28,7 +32,7 @@ export function renderTrendCollection(movie) {
        onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'"
         
    "/><div class="movie-meta">
-         <h2 class="card-item__title"  data-id="${id}">${title}</h2>
+         <h2 class="card-item__title"  data-id="${id}">${slicedTitle}</h2>
           <p class="card-item__desc"> ${movieGenresList} | ${realeaseYear} </p>
       </div></li>
       `;
@@ -128,3 +132,13 @@ function getGenres(genresId) {
 }
 
 
+function textSlicer(text, limit) {
+  text = text.trim();
+  if (text.length <= limit) return text;
+  text = text.slice(0, limit); 
+  lastSpace = text.lastIndexOf(' ');
+  if (lastSpace > 0) {
+    text = text.substr(0, lastSpace);
+  }
+  return text + '...';
+}
