@@ -1,0 +1,166 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: var(--transformation);
+}
+
+.modal-window__film {
+  display: flex;
+  position: absolute;
+  top: 0%;
+  left: 21%;
+  width: 806px;
+  height: 558px;
+  padding: 40px 12px;
+  background: #ffffff;
+}
+
+.modal-window__image {
+  max-width: 375px;
+  max-height: 478px;
+}
+
+.modal-window__content {
+  margin-left: 16px;
+}
+
+.modal-window__film--title {
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 35px;
+  text-transform: uppercase;
+}
+
+.modal-window__info {
+  display: flex;
+  padding: 20px 0px 12px;
+}
+
+.modal-window__review--text {
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #8c8c8c;
+}
+
+.modal-window__info--data {
+  margin-left: 80px;
+}
+
+.modal-window__data {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.modal-window__data--vote {
+  align-items: center;
+  text-align: center;
+  width: 36px;
+  height: 16px;
+  margin-right: 2px;
+  background: #ff6b01;
+  color: #ffffff;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.modal-window__data--votes {
+  margin-left: 7px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.modal-window__data--popul {
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.modal-window__data--title {
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  text-transform: uppercase;
+}
+
+.modal-window__data--genre {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.modal-window__about-film {
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  text-transform: uppercase;
+}
+
+.modal-window__film--overview {
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.modal-window__film--overview {
+  width: 391px;
+}
+
+.modal-window__btn--watched {
+  margin: 0px 15px 0px 24px;
+  width: 136px;
+  height: 44px;
+  background: #ff6b01;
+  color: #ffffff;
+  border-radius: 5px;
+  border: none;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.modal-window__btn--queue {
+  width: 136px;
+  height: 44px;
+  background: #ff6b01;
+  color: #ffffff;
+  border-radius: 5px;
+  border: none;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.modal-window__btn--close {
+  position: fixed;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.1);
+  background-color: #8c8c8c;
+  cursor: pointer;
+}

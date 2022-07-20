@@ -1,0 +1,37 @@
+<div class="backdrop">
+  <div class="modal-window__film">
+    <div class="modal-window__image">
+      <img class="card-item__img--byId" src="${renderPoster}${poster_path}"
+        onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'"
+        alt="${title}" loading="lazy" data-id="${id}" />
+    </div>
+    <div class="modal-window__content">
+      <h2 class="modal-window__film--title" data-id="${id}">${title}</h2>
+      <div class="modal-window__info">
+        <ul>
+          <li class="modal-window__review--text">Vote / Votes</li>
+          <li class="modal-window__review--text">Popularity</li>
+          <li class="modal-window__review--text">Original Title</li>
+          <li class="modal-window__review--text">Genre</li>
+        </ul>
+        <ul class="modal-window__info--data">
+          <li class="modal-window__data">
+            <p class="modal-window__data--vote">${vote_average}</p>
+            <span class="">/</span>
+            <p class="modal-window__data--votes">${vote_count}</p>
+          </li>
+          <li class="modal-window__data--popul">${popularity
+          .toString()
+          .slice(0, -4)}</li>
+          <h3 class="modal-window__data--title">${original_title}</h3>
+          <li class="modal-window__data--genre">${genres.map(gen => gen.name)}</li>
+        </ul>
+      </div>    
+        <h3 class="modal-window__about-film">About</h3>
+        <p class="modal-window__film--overview">${overview}</p>
+      <button class="modal-window__btn--watched">ADD TO WATCHED</button>
+      <button class="modal-window__btn--queue">ADD TO QUEUE</button>      
+    </div>
+    <button class="modal-window__btn--close"></button>
+  </div>
+</div>
