@@ -1,3 +1,4 @@
+import {LsWatched} from './localstorage'
 import { fetchByID } from './api-fetch';
 import { cards, renderOneFilm } from './render-trends';
 const addBtn = document.querySelector('.addButton');
@@ -16,10 +17,33 @@ function oneCardRender(event) {
   
   event.preventDefault();
   movieId = event.target.dataset.id;
- fetchByID(movieId).then(data => {
+  fetchByID(movieId).then(data => {
     renderOneFilm(data);
-    // console.log('byID', data);
- });
+    const watchedBtn = document.querySelector('.modal-window__btn--watched');
+    // + оновити класи для watchedBtn
+    watchedBtn.innerHTML = LsWatched.isIncluded(Number(movieId))
+      ? 'REMOVE FROM WATCHED'
+      : 'ADD TO WATCHED';
+    // + оновити класи для watchedBtn
+    watchedBtn.addEventListener('click', () => {
+      if (!LsWatched.isIncluded(Number(movieId))) {
+        LsWatched.addItem(data);
+        watchedBtn.innerHTML = 'REMOVE FROM WATCHED';
+        // + оновити класи для watchedBtn
+      } else {
+        LsWatched.deleteItem(Number(movieId));
+        watchedBtn.innerHTML = 'ADD TO WATCHED';
+        // + оновити класи для watchedBtn
+      }
+    });
+
+  });
+//  fetchByID(movieId).then(data => {
+//    renderOneFilm(data);
+   
+   
+//     // console.log('byID', data);
+//  });
   // addBtn.addEventListener('click', saveAddInStorage);
 };
 
