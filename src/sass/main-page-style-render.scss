@@ -1,0 +1,125 @@
+.cards-container {
+margin-top: 20px;
+    width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+            width: 768px;
+                margin-top: 60px;
+                padding-left: 32px;
+                padding-right: 32px;
+        }
+    
+      
+      @media screen and (min-width: 1280px) {
+            width: 1280px;
+            margin-top: 60px;
+            padding-left: 31px;
+            padding-right: 31px;
+    
+        };
+}
+
+.card-list {
+    font-family: Roboto,sans-serif;
+    margin-top: 0px;
+        padding: 0;
+
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        
+            display: flex;
+            flex-wrap: wrap;
+           }
+
+
+ @media screen and (min-width: 1280px) {
+     display: flex;
+     flex-wrap: wrap;
+    }
+};
+
+.card-item {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    width: 280px;
+    height: 443px;
+		border-radius:3px;
+		transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        width: 336px;
+        height: 494px;
+        margin-right: 32px;
+    };
+
+    @media screen and (min-width: 1280px) {
+        width: 395px;
+        height: 634px;
+        margin-right: 16px;
+        margin-left: 0px;
+    };
+
+		&:hover {
+			transform: scale(1.03);
+			box-shadow: 7px 3px 10px #d0bdbd;
+			cursor: pointer;
+		}
+};
+
+.card-item:nth-child(2n) {
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        margin-right: 0px;
+    };
+};
+
+.card-item:nth-child(3n) {
+    @media screen and (min-width: 1280px) {
+        
+        margin-right: 0px;
+    };
+};
+
+.card-item__img {
+    margin-bottom: 8px;
+
+    width: 280px;
+    height: 402px;
+
+    border-radius: 5px;
+
+    @media screen and (min-width: 768px) and (max-width: 1280px) {
+        width: 336px;
+        height: 455px;
+    };
+
+    @media screen and (min-width: 1280px) {
+        width: 395px;
+        height: 574px;
+    };
+};
+
+.card-item__title {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    text-transform: uppercase;
+    color: #000000;
+
+    @media screen and (min-width: 1280px) {
+        font-size: 20px;
+        line-height: 24px;
+    };
+};
+
+.card-item__desc {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14px;
+    color: #FF6B08;
+
+    @media screen and (min-width: 1280px) {
+        font-size: 20px;
+        line-height: 24px;
+    };
+};
