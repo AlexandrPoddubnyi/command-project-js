@@ -62,7 +62,7 @@ export function renderOneFilm(...movie) {
 <div class="modal-window__film">
   <div class="modal-window__image">
     <img src="${renderPoster}${poster_path}" 
-  onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'" alt="${title}" loading="lazy" data-id="${id}" width="375" height="478">
+  onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'" alt="${title}" loading="lazy" data-id="${id}" >
   </div>
   <div class="modal-window__content">
   <h2 class="modal-window__film--title" data-id="${id}">${title}</h2>
@@ -102,10 +102,15 @@ export function renderOneFilm(...movie) {
   </div>
   <h3 class="modal-window__about-film">ABOUT</h3>
   <p class="modal-window__film--overview">${overview}</p>
-  <button class="modal-window__btn--watched">ADD TO WATCHED</button>
-  <button class="modal-window__btn--queue">ADD TO QUEUE</button>
+  <div class="modal-window__buttons">
+  <button class="modal-window__btn--watched" type="button">ADD TO WATCHED</button>
+  <button class="modal-window__btn--queue" type="button">ADD TO QUEUE</button>
   </div>
-  <button class="modal-window__btn--close"></button>
+  </div>
+  <button class="modal-window__btn--close" type="button">
+    <svg class="modal-window__close-icon" width="20" height="20">
+      <use href="./images/sprite.svg#close-button"></use>
+    </svg></button>
 </div>
 </div>`;
   }).join('');
