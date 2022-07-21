@@ -14,7 +14,7 @@ export { fetchTrendMovies, fetchBySearchMovies, fetchByID };
 async function fetchTrendMovies(page = 1) {
   try {
     const { data } = await axios.get(
-      `${BY_TRENDS}?api_key=${KEY}&page=${page}`
+      `${BY_TRENDS}?api_key=${KEY}&page=${page}&language=en`
     );
     return data;
   } catch (error) {}
@@ -37,9 +37,6 @@ async function fetchByID(id) {
   } catch (error) {}
 }
 
-// Проверка работаспособности рендера
-
 fetchTrendMovies().then(data => {
-  renderTrendCollection(data);
-  console.log('byTrends', data);
-});
+     renderTrendCollection(data);
+   });
