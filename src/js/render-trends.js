@@ -101,8 +101,10 @@ export function renderOneFilm(...movie) {
   </div>
   <h3 class="modal-window__about-film">ABOUT</h3>
   <p class="modal-window__film--overview">${overview}</p>
-  <button class="modal-window__btn--watched">ADD TO WATCHED</button>
-  <button class="modal-window__btn--queue">ADD TO QUEUE</button>
+  <div class="modal-window__buttons">
+    <button type="submit" class="modal-window__btn" add-to-watch>ADD TO WATCHED</button>
+    <button type="submit" class="modal-window__btn" add-to-queue>ADD TO QUEUE</button>
+  </div>
   </div>
   <button class="modal-window__btn--close"></button>
 </div>
@@ -111,7 +113,6 @@ export function renderOneFilm(...movie) {
 
   cards.insertAdjacentHTML('beforebegin', markupOneFilm);
 }
-  
 
 function getGenres(genresId) {
   let movieGenres = genres.reduce((acc, { id, name }) => {
