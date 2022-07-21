@@ -15,7 +15,7 @@
     text-transform: uppercase;
     font-weight: 500;
     font-size: 30px;
-    line-height: (35/30);
+    line-height: calc(35/30);
     }
 .teammate__name{
     margin-top: 10px;
@@ -24,13 +24,13 @@
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
-    line-height: (16/12);
+    line-height: calc(16/12);
     }
 .teammate__role{
     margin-top: 6px;
     font-weight: 500;
     font-size: 16;
-    line-height: (18/16);
+    line-height: calc(18/16);
     color: #757575;
     }
 .teammate__socials{
@@ -40,7 +40,7 @@
     margin-top: 12px;
     font-weight: 500;
     font-size: 16;
-    line-height: (18/16);
+    line-height: calc(18/16);
      color: #6991ac;
     }
 .team-modal{

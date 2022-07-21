@@ -37,9 +37,8 @@ async function fetchByID(id) {
   } catch (error) {}
 }
 
-// Проверка работаспособности рендера
+
 
 fetchTrendMovies().then(data => {
   renderTrendCollection(data);
-  console.log('byTrends', data);
 });
