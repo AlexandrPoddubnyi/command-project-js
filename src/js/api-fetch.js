@@ -9,7 +9,7 @@ import {
 } from './api-keys';
 import { renderTrendCollection, renderOneFilm } from './render-trends';
 import { body } from './utils';
-export { fetchTrendMovies, fetchBySearchMovies, fetchByID };
+export { fetchTrendMovies, fetchBySearchMovies, fetchByID,fetchByIDUa };
 
 // Fetch полной инф-ы по трендам
   
@@ -50,6 +50,14 @@ async function fetchByID(id) {
   } catch (error) {}
 }
 
+async function fetchByIDUa(id) {
+  try {
+    const { data } = await axios.get(
+      `${BY_ID}${id}?api_key=${KEY}&language=uk`
+    );
+    return data;
+  } catch (error) {}
+}
 
 
 

@@ -1,14 +1,31 @@
 import { genres } from './genres.json';
 import { renderMainPageEN, renderMainPageUA } from './api-fetch';
 import { cards } from './render-trends';
+const homeBtn = document.querySelector('.header__link ');
+const libaryBtn = document.querySelector('.header__link-libary');
+const logoText = document.querySelector('.header__logo-text');
+const inputPlaceholder = document.getElementById('.ControlID-1');
 export const body = document.querySelector('body');
 const btnUa = document.querySelector('.locale-to-ua');
-
+const btnEn = document.querySelector('.locale-to-en');
+btnEn.addEventListener('click', localeEN);
 btnUa.addEventListener('click', localeUA);
 function localeUA() {
   body.classList.add('UA');
+  cards.innerHTML = ''
+  homeBtn.innerHTML = 'Головна'
+  libaryBtn.innerHTML = 'Бібліотека'
+  logoText.innerHTML = 'Фільмотека'
   renderMainPageUA();
-  cards.refresh();
+}
+
+function localeEN() {
+  body.classList.add('EN');
+  cards.innerHTML = '';
+  homeBtn.innerHTML = 'Home';
+  libaryBtn.innerHTML = 'My Libary';
+  logoText.innerHTML = 'Filmoteca';
+renderMainPageEN();
 }
 
 function getGenres(genresId) {

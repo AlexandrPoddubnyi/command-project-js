@@ -21,7 +21,7 @@ export function renderTrendCollection(movie) {
       if (typeof release_date !== 'undefined') {
         realeaseYear = release_date.slice(0, 4);
       };
-const slicedTitle = textSlicer(title, 31);
+const slicedTitle = textSlicer(title, 30);
       const movieGenresList = getGenres(genre_ids).join(', ');
       if (poster_path === null) {
       imgUrl = 'https://i.postimg.cc/MTBLYYMP/poster-not-available.jpg';
@@ -39,7 +39,7 @@ const slicedTitle = textSlicer(title, 31);
       `;
     })
     .join('');
-
+ 
   cards.insertAdjacentHTML('beforeend', markup);
 }
 
