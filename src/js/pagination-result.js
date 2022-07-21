@@ -118,27 +118,3 @@ function checkQueryError(searchQuery) {
     }, 5000);
   }
 }
-// Налаштування пагінації для сторінки Library (Watched Queue)
-// import { LsWatched } from './localstorage';
-
-// const watchedButton = document.querySelector('.button--watched');
-
-// watchedButton.addEventListener('click', onWatchedBtnClick);
-// function onWatchedBtnClick() {
-//   const watchedMovies = LsWatched.getItems();
-
-//   if (watchedMovies.length === 0) {
-//     emptyWatched();
-//   } else {
-//     const instance = createPagination();
-//     instance.setItemsPerPage(20);
-//     instance.setTotalItems(watchedMovies.length);
-//     instance.movePageTo(searchMovies.page);
-
-//     instance.on('afterMove', event => {
-//       const currentPage = event.page;
-//       window.scrollTo({ top: 220, behavior: 'smooth' });
-//       loadMoreSearchMovies(searchQuery, currentPage);
-//     });
-//   }
-// }
