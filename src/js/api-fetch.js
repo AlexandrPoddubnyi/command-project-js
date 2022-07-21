@@ -11,8 +11,6 @@ import { renderTrendCollection, renderOneFilm } from './render-trends';
 export { fetchTrendMovies, fetchBySearchMovies, fetchByID };
 
 // Fetch полной инф-ы по трендам
-  
-  
 async function fetchTrendMovies(page = 1) {
   try {
     const { data } = await axios.get(
@@ -21,7 +19,6 @@ async function fetchTrendMovies(page = 1) {
     return data;
   } catch (error) {}
 }
-
 
 //Fetch by Search
 async function fetchBySearchMovies(formInput, page = 1) {
@@ -43,10 +40,3 @@ async function fetchByID(id) {
 fetchTrendMovies().then(data => {
      renderTrendCollection(data);
    });
-
-
-
-  
-
-
- 
