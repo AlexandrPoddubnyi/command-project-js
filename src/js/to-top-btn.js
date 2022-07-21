@@ -5,8 +5,8 @@ window.addEventListener("scroll", showToTopButton);
 
 function showToTopButton() {
   if (
-    document.body.scrollTop > 300 ||
-    document.documentElement.scrollTop > 300
+    document.body.scrollTop > 500 ||
+    document.documentElement.scrollTop > 500
   ) {
     toTopButton.classList.remove('is-hidden');
   } else {

@@ -18,3 +18,9 @@ img {
 html {
   height: 100%;
 }
+body {
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
