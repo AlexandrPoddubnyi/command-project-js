@@ -1,7 +1,7 @@
 // | <span class="card-item__rating">${vote_average.toFixed(1)}</span>
 import { renderPoster } from './api-keys';
-import { genres } from './genres.json';
-export const cards = document.querySelector('.cards-container');
+import { getGenres,textSlicer } from './utils';
+export const cards = document.querySelector('.card-list');
 
 export function renderTrendCollection(movie) {
   const markup = movie.results
@@ -11,29 +11,33 @@ export function renderTrendCollection(movie) {
         title,
         poster_path,
         genre_ids,
-        overview,
         vote_average,
         release_date,
       } = movie;
       let realeaseYear = '';
+      let imgUrl = renderPoster + poster_path;
       if (typeof release_date !== 'undefined') {
         realeaseYear = release_date.slice(0, 4);
-      }
-      const movieGenresList = getMovieGenresList(genre_ids).join(', ');
-       return `<ul class="card-list">
+      };
+const slicedTitle = textSlicer(title, 30);
+      const movieGenresList = getGenres(genre_ids).join(', ');
+      if (poster_path === null) {
+      imgUrl = 'https://i.postimg.cc/MTBLYYMP/poster-not-available.jpg';
+      };
+      return `
       <li class="card-item">
-       <img  class="card-item__img" src="${renderPoster}${poster_path}"
+       <img  class="card-item__img" src="${imgUrl}"
         alt="${title}" loading="lazy" data-id="${id}"
-       onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'"
+       
         
-   "/>
-         <h2 class="card-item__tittle"  data-id="${id}">${title}</h2>
+   "/><div class="movie-meta">
+         <h2 class="card-item__title"  data-id="${id}">${slicedTitle}</h2>
           <p class="card-item__desc"> ${movieGenresList} | ${realeaseYear} </p>
-      </li>
-      </ul>`;
+      </div></li>
+      `;
     })
     .join('');
-
+ 
   cards.insertAdjacentHTML('beforeend', markup);
 }
 
@@ -56,11 +60,15 @@ export function renderOneFilm(...movie) {
       popularity,
       release_date,
     } = movie;
+    let imgUrl = renderPoster + poster_path;
+    if (poster_path === null) {
+      imgUrl = 'https://i.postimg.cc/MTBLYYMP/poster-not-available.jpg';
+      };
      return `<div class="backdrop">
 <div class="modal-window__film">
   <div class="modal-window__image">
-    <img src="${renderPoster}${poster_path}" 
-  onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'" alt="${title}" loading="lazy" data-id="${id}" width="375" height="478">
+    <img src="${imgUrl}" 
+   alt="${title}" loading="lazy" data-id="${id}" width="375" height="478">
   </div>
   <div class="modal-window__content">
   <h2 class="modal-window__film--title" data-id="${id}">${title}</h2>
@@ -87,8 +95,8 @@ export function renderOneFilm(...movie) {
       </li>
       <li class="modal-window__data">
         <p class="modal-window__data--popul">${popularity
-        .toString()
-        .slice(0, -4)}</p>
+          .toString()
+          .slice(0, -4)}</p>
       </li>
       <li class="modal-window__data">
         <h3 class="modal-window__data--title">${original_title}</h3>
@@ -109,19 +117,4 @@ export function renderOneFilm(...movie) {
   }).join('');
 
   cards.insertAdjacentHTML('beforebegin', markupOneFilm);
-}
-  
-
-function getMovieGenresList(genresIdsList) {
-  let movieGenres = genres.reduce((acc, { id, name }) => {
-    if (genresIdsList.includes(id)) {
-      acc.push(name);
-    }
-    return acc;
-  }, []);
-  if (movieGenres.length > 3) {
-    movieGenres = movieGenres.slice(0, 2);
-    movieGenres.push('Other');
-  }
-  return movieGenres;
 }
