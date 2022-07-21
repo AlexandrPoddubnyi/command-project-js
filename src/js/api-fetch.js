@@ -8,17 +8,30 @@ import {
   renderPoster,
 } from './api-keys';
 import { renderTrendCollection, renderOneFilm } from './render-trends';
+import { body } from './utils';
 export { fetchTrendMovies, fetchBySearchMovies, fetchByID };
 
 // Fetch полной инф-ы по трендам
+  
+  
 async function fetchTrendMovies(page = 1) {
   try {
     const { data } = await axios.get(
-      `${BY_TRENDS}?api_key=${KEY}&page=${page}`
+      `${BY_TRENDS}?api_key=${KEY}&page=${page}&language=en`
     );
     return data;
   } catch (error) {}
 }
+
+async function fetchTrendMoviesUA(page = 1) {
+  try {
+    const { data } = await axios.get(
+      `${BY_TRENDS}?api_key=${KEY}&page=${page}&language=uk`
+    );
+    return data;
+  } catch (error) {}
+}
+
 
 //Fetch by Search
 async function fetchBySearchMovies(formInput, page = 1) {
@@ -39,6 +52,21 @@ async function fetchByID(id) {
 
 
 
+
+  
+
+
+ export function renderMainPageEN() {
+  
 fetchTrendMovies().then(data => {
-  renderTrendCollection(data);
-});
+     renderTrendCollection(data);
+   });
+}
+
+renderMainPageEN();
+
+export function renderMainPageUA() {
+   fetchTrendMoviesUA().then(data => {
+     renderTrendCollection(data);
+   });
+}

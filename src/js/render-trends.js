@@ -21,7 +21,7 @@ export function renderTrendCollection(movie) {
       if (typeof release_date !== 'undefined') {
         realeaseYear = release_date.slice(0, 4);
       };
-const slicedTitle = textSlicer(title, 35);
+const slicedTitle = textSlicer(title, 31);
       const movieGenresList = getGenres(genre_ids).join(', ');
       if (poster_path === null) {
       imgUrl = 'https://i.postimg.cc/MTBLYYMP/poster-not-available.jpg';
@@ -125,5 +125,3 @@ export function renderOneFilm(...movie) {
 
 
 
-// onerror =
-//   "this.onerror=null;this.src='https://dummyimage.com/500x750/d1cad1/1c1c1c.jpg&text=Poster+not+found+:('";
