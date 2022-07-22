@@ -7,11 +7,15 @@ modalBtnEl.addEventListener('click', onModalClose);
 function onModalOpen(e){
     bodyEl.style.overflow = 'hidden';
     modalEl.style.display ='flex';
-    window.scrollTo({
-        top: 0,
-      })
-}
+    window.addEventListener('keydown', keydownOpen)
+};
 function onModalClose(e){
     bodyEl.style.overflow = 'scroll';
     modalEl.style.display ='none';
+    window.removeEventListener('keydown', keydownOpen, false);
+};
+function keydownOpen(e){
+    if(e.key = "Escape"){
+        onModalClose();
+    }
 }
