@@ -106,6 +106,10 @@
   }
 }
 
+.dark-theme .card-item__title {
+  color: #f7f7f7;
+}
+
 .card-item__desc {
   font-size: 12px;
   font-weight: 500;
@@ -119,16 +123,16 @@
 }
 .vote-library {
   padding: 3 11 3 11;
-  background: #FF6B01;
-    border-radius: 5px;
-    font-weight: 500;
-      font-size: 12px;
-      line-height: 14px;
-    width: 40px;
-      height: 20px;
-      align-items: center;
-      text-align: center;
-      text-transform: uppercase;
-    
-      color: #FFFFFF;
+  background: #ff6b01;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  width: 40px;
+  height: 20px;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+
+  color: #ffffff;
 }
