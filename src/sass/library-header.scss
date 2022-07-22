@@ -191,3 +191,12 @@
     margin-left: 8px;
   }
 }
+
+.toolbar__lib {
+    justify-content: flex-end;
+    padding: 16px 35px;
+    display: flex;
+    position: absolute;
+    top: 185px;
+    right: 0;
+}
