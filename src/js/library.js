@@ -1,5 +1,4 @@
 import { renderPoster } from './api-keys';
-import { genres } from './genres.json';
 import { getGenres,textSlicer } from './utils';
 export const cards = document.querySelector('.card-list');
 const btnWatched = document.querySelector('.watched');
@@ -37,7 +36,7 @@ function preStepsBeforeQueue() {
     }
 }
 
-export function createCardsList(movie) {
+function createCardsList(movie) {
     const markup = movie
         .map(movie => {
           const {
@@ -59,8 +58,7 @@ export function createCardsList(movie) {
             }
             const slicedTitle = textSlicer(title, 30);
           const movieGenresListArray = getMovieGenresListArray(genres);
-          const movieGenresList =
-           getGenres(movieGenresListArray).join(', ');
+          const movieGenresList = getGenres(movieGenresListArray).join(', ');
           return `
             <li class="card-item">
             <img  class="card-item__img" src="${imgUrl}"
@@ -74,7 +72,7 @@ export function createCardsList(movie) {
         })
         .join('');
     
-    cards.insertAdjacentHTML('beforeend', markup);
+  cards.insertAdjacentHTML('beforeend', markup);
 }
 
 function getMovieGenresListArray(genresIdsListArray) {
