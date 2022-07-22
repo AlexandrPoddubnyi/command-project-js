@@ -8,6 +8,7 @@ const footerDarktheme = document.querySelector('.footer');
 if (LsTheme.get() === 'dark-theme') {
   bodyRef.classList.add('dark-theme');
   footerDarktheme.classList.add('dark-theme');
+  toggleRef.setAttribute('checked', true);
 } else {
   bodyRef.classList.add('light-theme');
   footerDarktheme.classList.add('light-theme');
