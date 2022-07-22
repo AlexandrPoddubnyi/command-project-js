@@ -6,5 +6,6 @@ import '../src/js/localstorage';
 import '../src/js/modal';
 import '../src/js/teamModal';
 import '../src/js/theme-choice';
+import '../src/js/onModalOpen';
 import { renderMainPage } from '../src/js/api-fetch';
 renderMainPage();

@@ -64,7 +64,7 @@ export function renderOneFilm(...movie) {
     if (poster_path === null) {
       imgUrl = 'https://i.postimg.cc/MTBLYYMP/poster-not-available.jpg';
       };
-     return `<div class="backdrop">
+     return `
 <div class="modal-window__film">
   <div class="modal-window__image">
     <img src="${imgUrl}" 
@@ -113,7 +113,7 @@ export function renderOneFilm(...movie) {
   </div>
   <button class="modal-window__btn--close"></button>
 </div>
-</div>`;
+`;
   }).join('');
 
   cards.insertAdjacentHTML('beforebegin', markupOneFilm);

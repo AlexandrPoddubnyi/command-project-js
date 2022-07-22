@@ -25,36 +25,6 @@
     align-items: center;
     background-color: rgb(117, 117, 117, 0.3)
 }
-@include tablet{
-    .team-modal-wraper{
-        padding-top: 100px;
-        padding-bottom: 100px;
-        }
-    .team__list{
-        display: grid;
-        grid-template-columns: repeat(2, 1fr); 
-        gap: 20px;
-        }
-    .img-wraper{
-        width: 100%;
-        height: 300px;
-        }
-    .team-modal{
-        position: relative;
-        }
-}
-@include desktop{
-     .team-modal{
-        margin-top: 100px;
-        margin-bottom: 100px;
-        height: 90vh;
-        }
-    .team__list{
-        display: grid;
-        grid-template-columns: repeat(3, 1fr); 
-        gap: 20px;
-        }
-}
 .teamModal-btn{
     position: absolute;
     top:5;
@@ -169,3 +139,47 @@
         color: #ff6b08;
         }
     }
+.modal-btn{
+    cursor: pointer;
+    border: 1px solid transparent;
+    background-color: transparent;
+    color: inherit;
+    margin-left: 4px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    &:hover{
+        border: 1px solid #ff6b08;
+        color: #ff6b08;
+        }
+        
+    }
+@include tablet{
+    .team-modal-wraper{
+        padding-top: 100px;
+        padding-bottom: 100px;
+        }
+    .team__list{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 20px;
+        }
+    .img-wraper{
+        width: 100%;
+        height: 300px;
+        }
+    .team-modal{
+        height: 90vh;
+        position: relative;
+        }
+}
+@include desktop{
+     .team-modal{
+        margin-top: 100px;
+        margin-bottom: 100px;
+        }
+    .team__list{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 20px;
+        }
+}
