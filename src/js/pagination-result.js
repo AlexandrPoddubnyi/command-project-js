@@ -2,7 +2,7 @@ import { fetchTrendMovies, fetchBySearchMovies } from './api-fetch';
 import createPagination from './pagination';
 import { renderTrendCollection } from './render-trends';
 
-const moviesList = document.querySelector('.cards-container');
+const moviesList = document.querySelector('.card-list');
 const searchForm = document.getElementById('search-form');
 const searchError = document.querySelector('.header__search-error');
 
@@ -12,7 +12,6 @@ window.addEventListener('load', onPageLoad);
 async function onPageLoad() {
   try {
     const movies = await fetchTrendMovies();
-    console.log(movies);
 
     const instance = createPagination();
     instance.setItemsPerPage(20);
@@ -58,17 +57,16 @@ function onSearchFormSubmit(e) {
 
 async function loadSearchMovies(searchQuery) {
   try {
-    const movies = await fetchBySearchMovies(searchQuery, 1);
-    console.log(movies);
+    const searchMovies = await fetchBySearchMovies(searchQuery, 1);
 
-    checkSearchError(movies);
+    checkSearchError(searchMovies);
 
-    renderTrendCollection(movies);
+    renderTrendCollection(searchMovies);
 
     const instance = createPagination();
     instance.setItemsPerPage(20);
-    instance.setTotalItems(movies.total_results);
-    instance.movePageTo(movies.page);
+    instance.setTotalItems(searchMovies.total_results);
+    instance.movePageTo(searchMovies.page);
 
     instance.on('afterMove', event => {
       const currentPage = event.page;
