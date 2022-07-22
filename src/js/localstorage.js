@@ -46,9 +46,39 @@ class LocalStorageInstance {
     return this.items.find(item => item.id === id) ? true : false;
   }
 }
-// Створюємо і одночасно експортуємо інстанс для керування списком "Переглянуті". В аргумент передаємо ім'я властивості в Local Storage.
+
+class LocalStorageFlag {
+  constructor(flagname) {
+    this.flagname = flagname;
+    this.value = this.get() || false;
+    // console.log(this.flagname);
+    // console.log(this.value);
+  }
+  get() {
+    try {
+      return JSON.parse(localStorage.getItem(`${this.flagname}`)) || false;
+    } catch {
+      console.log('error read from LS');
+      return false;
+    }
+  }
+  set(value) {
+    try {
+      localStorage.setItem(`${this.flagname}`, JSON.stringify(value));
+      return true;
+    } catch {
+      console.log('error save to LS');
+      return false;
+    }
+  }
+}
+
+// Створюємо і одночасно експортуємо інстанси для керування списками "Переглянуті" та "Черга". В аргумент передаємо ім'я властивості в Local Storage.
 export const LsWatched = new LocalStorageInstance('watchedList');
 export const LsQueue = new LocalStorageInstance('queueList');
+
+// Створюємо і одночасно експортуємо інстанс для керування прапорцем "Тема". В аргумент передаємо бажане ім'я прапорця
+export const LsTheme = new LocalStorageFlag('theme');
 
 /* Tests */
 
@@ -104,3 +134,9 @@ export const LsQueue = new LocalStorageInstance('queueList');
 
 //obj1 id507086
 //obj2 id438148
+
+// console.log(LsTheme.get());
+// console.log(LsTheme.set('light-theme'));
+// console.log(LsTheme.get());
+// console.log(LsTheme.set('dark-theme'));
+// console.log(LsTheme.get());
