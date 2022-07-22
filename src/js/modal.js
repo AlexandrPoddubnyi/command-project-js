@@ -1,9 +1,7 @@
 import { LsWatched, LsQueue } from './localstorage';
 import { fetchByID } from './api-fetch';
 import { cards, renderOneFilm } from './render-trends';
-const addBtn = document.querySelector('.addButton');
 let movieId;
-let movieData;
 cards.addEventListener('click', oneCardRender);
 
 function oneCardRender(event) {

@@ -1,12 +1,13 @@
 import { renderPoster } from './api-keys';
 import { genres } from './genres.json';
-export const cards = document.querySelector('.cards-container');
+import { getGenres,textSlicer } from './utils';
+export const cards = document.querySelector('.card-list');
 const btnWatched = document.querySelector('.watched');
 const btnQueue = document.querySelector('.queue');
-const watchedListFromStorage = localStorage.getItem('watchedList');
-const arrayWatchedListFromStorage = JSON.parse(watchedListFromStorage);
-const queueListFromStorage = localStorage.getItem('queueList');
-const arrayQueueListFromStorage = JSON.parse(queueListFromStorage);
+ const watchedListFromStorage = localStorage.getItem('watchedList');
+export const arrayWatchedListFromStorage = JSON.parse(watchedListFromStorage);
+ const queueListFromStorage = localStorage.getItem('queueList');
+  const arrayQueueListFromStorage = JSON.parse(queueListFromStorage);
 
 preStepsBeforeWatched()
 btnWatched.addEventListener('click', preStepsBeforeWatched);
@@ -36,52 +37,44 @@ function preStepsBeforeQueue() {
     }
 }
 
-function createCardsList(movie) {
+export function createCardsList(movie) {
     const markup = movie
         .map(movie => {
-            const {
-                id,
-                title,
-                poster_path,
-                genres,
-                overview,
-                vote_average,
-                release_date,
+          const {
+            id,
+            title,
+            poster_path,
+            genres,
+            overview,
+            vote_average,
+            release_date,
             } = movie;
-            let realeaseYear = '';
-            if (typeof release_date !== 'undefined') {
-                realeaseYear = release_date.slice(0, 4);
-            };
-            const movieGenresListArray = getMovieGenresListArray(genres);
-            const movieGenresList = getMovieGenresList(movieGenresListArray).join(', ');
-            return `<ul class="card-list">
+          let realeaseYear = '';
+          let imgUrl = renderPoster + poster_path;
+          if (typeof release_date !== 'undefined') {
+            realeaseYear = release_date.slice(0, 4);
+          }
+          if (poster_path === null) {
+            imgUrl = 'https://i.postimg.cc/MTBLYYMP/poster-not-available.jpg';
+            }
+            const slicedTitle = textSlicer(title, 30);
+          const movieGenresListArray = getMovieGenresListArray(genres);
+          const movieGenresList =
+           getGenres(movieGenresListArray).join(', ');
+          return `
             <li class="card-item">
-            <img  class="card-item__img" src="${renderPoster}${poster_path}"
-            alt="${title}" loading="lazy" data-id="${id}"
-            onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'"
-            "/>
-            <h2 class="card-item__tittle"  data-id="${id}">${title}</h2>
-            <p class="card-item__desc"> ${movieGenresList} | ${realeaseYear} | ${vote_average} </p>
+            <img  class="card-item__img" src="${imgUrl}"
+            alt="${title}" loading="lazy" data-id="${id}"/>
+            <h2 class="card-item__title"  data-id="${id}">${slicedTitle}</h2>
+            <p class="card-item__desc"> ${movieGenresList.slice(0,27)} | ${realeaseYear} | <span class="vote-library">${vote_average.toFixed(
+            1
+          )}</span> </p>
             </li>
-            </ul>`;
+            `;
         })
         .join('');
-
+    
     cards.insertAdjacentHTML('beforeend', markup);
-}
-
-function getMovieGenresList(genresIdsList) {
-    let movieGenres = genres.reduce((acc, { id, name }) => {
-        if (genresIdsList.includes(id)) {
-            acc.push(name);
-        }
-        return acc;
-    }, []);
-    if (movieGenres.length > 3) {
-        movieGenres = movieGenres.slice(0, 2);
-        movieGenres.push('Other');
-    };
-    return movieGenres;
 }
 
 function getMovieGenresListArray(genresIdsListArray) {

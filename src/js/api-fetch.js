@@ -8,7 +8,7 @@ import {
   renderPoster,
 } from './api-keys';
 import { renderTrendCollection, renderOneFilm } from './render-trends';
-export { fetchTrendMovies, fetchBySearchMovies, fetchByID };
+export { renderMainPage, fetchTrendMovies, fetchBySearchMovies, fetchByID };
 
 // Fetch полной инф-ы по трендам
 async function fetchTrendMovies(page = 1) {
@@ -36,7 +36,7 @@ async function fetchByID(id) {
     return data;
   } catch (error) {}
 }
-
-fetchTrendMovies().then(data => {
-     renderTrendCollection(data);
-   });
+ function renderMainPage () { fetchTrendMovies().then(data => {
+  renderTrendCollection(data);
+});
+}
