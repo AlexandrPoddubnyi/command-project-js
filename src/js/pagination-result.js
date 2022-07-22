@@ -24,7 +24,7 @@ async function onPageLoad() {
       loadMoreTrendMovies(currentPage);
     });
   } catch (error) {
-    console.log(error);
+   
   }
 }
 
