@@ -68,50 +68,44 @@ export function renderOneFilm(...movie) {
 <div class="modal-window__film">
   <div class="modal-window__image">
     <img src="${imgUrl}" 
-   alt="${title}" loading="lazy" data-id="${id}" width="375" height="478">
+   alt="${title}" loading="lazy" data-id="${id}" >
+
   </div>
   <div class="modal-window__content">
   <h2 class="modal-window__film--title" data-id="${id}">${title}</h2>
   <div class="modal-window__info">
-    <ul class="modal-window__info--review">
-      <li class="modal-window__review">
+    <ul class="modal-window__info--list">
+      <li class="modal-window__info--content">
         <p class="modal-window__review--text">Vote / Votes</p>
+        <p class="modal-window__info--vote-votes"><span class="modal-window__data--vote">${vote_average}</span> / <span class="modal-window__data--votes">${vote_count}</span></p>
       </li>
-      <li class="modal-window__review">
+      <li class="modal-window__info--content">
         <p class="modal-window__review--text">Popularity</p>
-      </li>
-      <li class="modal-window__review">
-        <p class="modal-window__review--text">Original Title</p>
-      </li>
-      <li class="modal-window__review">
-        <p class="modal-window__review--text">Genre</p>
-      </li>
-    </ul>
-    <ul class="modal-window__info--data">
-      <li class="modal-window__data">
-        <p class="modal-window__data--vote">${vote_average}</p>
-        <span class="modal-window__info--span">/</span>
-        <p class="modal-window__data--votes">${vote_count}</p>
-      </li>
-      <li class="modal-window__data">
         <p class="modal-window__data--popul">${popularity
-          .toString()
-          .slice(0, -4)}</p>
+        .toString()
+        .slice(0, -4)}</p>
       </li>
-      <li class="modal-window__data">
-        <h3 class="modal-window__data--title">${original_title}</h3>
+      <li class="modal-window__info--content">
+        <p class="modal-window__review--text">Original Title</p>
+        <p class="modal-window__data--title">${original_title}</p>
       </li>
-      <li class="modal-window__data">
+      <li class="modal-window__info--content">
+        <p class="modal-window__review--text">Genre</p>
         <p class="modal-window__data--genre">${genres.map(gen => gen.name)}</p>
       </li>
     </ul>
   </div>
   <h3 class="modal-window__about-film">ABOUT</h3>
   <p class="modal-window__film--overview">${overview}</p>
-  <button class="modal-window__btn--watched">ADD TO WATCHED</button>
-  <button class="modal-window__btn--queue">ADD TO QUEUE</button>
+  <div class="modal-window__buttons">
+  <button class="modal-window__btn--watched" type="button">ADD TO WATCHED</button>
+  <button class="modal-window__btn--queue" type="button">ADD TO QUEUE</button>
   </div>
-  <button class="modal-window__btn--close"></button>
+  </div>
+  <button class="modal-window__btn--close" type="button">
+    <svg class="modal-window__close-icon" width="20" height="20">
+      <use href="./images/sprite.svg#close-button"></use>
+    </svg></button>
 </div>
 </div>`;
   }).join('');
