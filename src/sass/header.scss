@@ -80,7 +80,7 @@
       background-color: transparent;
       width: 280px;
       border-bottom: 0.5px solid #ffffff;
-      padding: 4px 16px 4px 0;
+      padding: 4px 0;
       font-weight: 400;
       line-height: 1.14;
       color: #ffffff;
@@ -96,20 +96,22 @@
       }
     }
 
+    &__form-btn {
+      position: absolute;
+      bottom: 10;
+      right: 0;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
     &__form-icon {
-      width: 12px;
-      height: 12px;
+      width: 14px;
+      height: 14px;
       position: absolute;
       top: 50%;
       right: 0;
       transform: translateY(-50%);
       cursor: pointer;
-    }
-
-    &__text-error {
-      font-weight: 400;
-      line-height: 1.14;
-      color: #ff001b;
     }
   }
 }
@@ -150,10 +152,6 @@
 
     &__form input {
       width: 336px;
-    }
-
-    &__text-error {
-      text-align: center;
     }
   }
 }
@@ -258,7 +256,6 @@ a:active {
 }
 .header__search-error {
   display: block;
-  margin-top: 20px;
   font-weight: 400;
   font-size: 14px;
   line-height: 16px;

@@ -1,6 +1,4 @@
-// | <span class="card-item__rating">${vote_average.toFixed(
-//          1
-//        )}
+// | <span class="card-item__rating">${vote_average.toFixed(1)}</span>
 import { renderPoster } from './api-keys';
 import { getGenres,textSlicer } from './utils';
 export const cards = document.querySelector('.card-list');
@@ -120,8 +118,3 @@ export function renderOneFilm(...movie) {
 
   cards.insertAdjacentHTML('beforebegin', markupOneFilm);
 }
-  
-
-
-
-
