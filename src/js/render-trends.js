@@ -65,7 +65,7 @@ export function renderOneFilm(...movie) {
     if (poster_path === null) {
       imgUrl = 'https://i.postimg.cc/MTBLYYMP/poster-not-available.jpg';
       };
-     return `
+    return `
 <div class="modal-window__film">
   <div class="modal-window__image">
     <img src="${imgUrl}" 
@@ -92,7 +92,7 @@ export function renderOneFilm(...movie) {
       </li>
       <li class="modal-window__info--content">
         <p class="modal-window__review--text">Genre</p>
-        <p class="modal-window__data--genre">${genres.map(gen => gen.name)}</p>
+        <p class="modal-window__data--genre">${genres.map(gen => gen.name).join(', ')}</p>
       </li>
     </ul>
   </div>
