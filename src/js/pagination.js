@@ -1,4 +1,5 @@
 import Pagination from 'tui-pagination';
+import { hideLoader, showLoader } from './preloader';
 
 const options = {
   totalItems: 1000,
@@ -10,7 +11,8 @@ const options = {
   lastItemClassName: 'tui-last-child',
   template: {
     page: '<a class="tui-page-btn  ">{{page}}</a>',
-    currentPage: '<strong class="tui-page-btn tui-is-selected  ">{{page}}</strong>',
+    currentPage:
+      '<strong class="tui-page-btn tui-is-selected  ">{{page}}</strong>',
     moveButton:
       '<a class="tui-page-btn tui-{{type}}">' +
       '<span class="tui-ico-{{type}}">{{type}}</span>' +

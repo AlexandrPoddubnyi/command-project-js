@@ -1,10 +1,10 @@
 import '../src/js/pagination-result';
 import '../src/js/to-top-btn';
 import '../src/js/api-fetch';
-import '../src/js/spiner';
+import '../src/js/preloader';
 import '../src/js/localstorage';
 import '../src/js/modal';
 import '../src/js/teamModal';
 import '../src/js/theme-choice';
-import '../src/js/authorization/modal-auth'
-import '../src/js/authorization/authorization'
+import '../src/js/authorization/modal-auth';
+import '../src/js/authorization/authorization';
