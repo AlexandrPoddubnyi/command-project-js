@@ -42,7 +42,8 @@ const slicedTitle = textSlicer(title, 30);
 }
 
 
-
+const filmBackdropEl = document.querySelector('.modal-film-backdrop');
+const bodyElement = document.querySelector('body');
 export function renderOneFilm(...movie) {
   const markupOneFilm = movie.map(movie => {
     const {
@@ -64,7 +65,7 @@ export function renderOneFilm(...movie) {
     if (poster_path === null) {
       imgUrl = 'https://i.postimg.cc/MTBLYYMP/poster-not-available.jpg';
       };
-     return `<div class="backdrop">
+     return `
 <div class="modal-window__film">
   <div class="modal-window__image">
     <img src="${imgUrl}" 
@@ -102,13 +103,36 @@ export function renderOneFilm(...movie) {
   <button class="modal-window__btn--queue" type="button">ADD TO QUEUE</button>
   </div>
   </div>
-  <button class="modal-window__btn--close" type="button">
-    <svg class="modal-window__close-icon" width="20" height="20">
-      <use href="./images/sprite.svg#close-button"></use>
-    </svg></button>
+  <button class="filmModal-btn" type="button">
+      X
+  </button>
 </div>
-</div>`;
+`;
   }).join('');
+ 
+  filmBackdropEl.insertAdjacentHTML('afterbegin', markupOneFilm);
+  const filmCloseBtn = document.querySelector('.filmModal-btn');
+  filmBackdropEl.style.display = 'block';
+  bodyElement.style.overflow = 'hidden';
+  filmBackdropEl.addEventListener('click', onBackdropClose);
+  filmCloseBtn.addEventListener('click', onFilmModalClose);
+  window.addEventListener('keydown', onEscClose);
 
-  cards.insertAdjacentHTML('beforebegin', markupOneFilm);
+}
+function onFilmModalClose(e){
+  filmBackdropEl.innerHTML ='';
+  bodyElement.style.overflow = 'scroll';
+  filmBackdropEl.style.display = 'none';
+  filmBackdropEl.removeEventListener('click', onBackdropClose, false );
+  window.removeEventListener('keydown', onEscClose, false);
+}
+function onBackdropClose(e){
+  if(e.target === filmBackdropEl){
+    onFilmModalClose();
+  }
+}
+function onEscClose(e){
+  if(e.key === 'Escape'){
+    onFilmModalClose();
+  }
 }
