@@ -1,0 +1,174 @@
+.backdrop {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.22);
+}
+
+.modal {
+    width: 600px;
+    min-height: 581px;
+
+    /*@include desk {
+        width: 528px;
+        min-height: 609px;
+    }*/
+
+    background: #ffffff;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-name: modal-close-open;
+    animation-duration: 4s;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    animation-fill-mode: forwards;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: initial;
+}
+
+.auth {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-form {
+    width: 600px;
+    margin: auto;
+    background-color: black;
+    border-radius: 6px;
+    padding: 40px;
+    box-shadow: 0 0 16px rgba(255, 196, 0, 0.6);
+
+    &__welcome {
+        font-size: 48px;
+        color: red;
+        font-weight: 600;
+        text-align: center;
+        border-bottom: 1px solid orange;
+    }
+}
+
+.sign-up {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin: 50px auto 0;
+
+    &__title {
+        font-size: 30px;
+        color: red;
+        text-align: center;
+        margin: 0 0 30px 0;
+    }
+
+    &__input {
+        font-size: 18px;
+        border: 1px solid rgba(161, 161, 161, 05);
+        border-radius: 4px;
+        padding: 10px 6px;
+        outline: none;
+
+        &:hover {
+            border: 1px solid orange;
+            box-shadow: 0 0 14px orange;
+        }
+
+        &:focus {
+            border: 1px solid orange;
+            box-shadow: 0 0 14px orange;
+        }
+    }
+
+    &__input + &__input {
+        margin-top: 30px;
+    }
+
+    &__btn {
+        font-size: 20px;
+        font-weight: 600;
+        color: white;
+        width: 200px;
+        border: none;
+        border-radius: 4px;
+        background-color: orange;
+        padding: 12px 6px;
+        margin: 40px auto 0 auto;
+        cursor: pointer;
+
+        &:hover {
+            box-shadow: 0 0 14px orange;
+        }
+
+        &:focus {
+            box-shadow: 0 0 14px orange;
+        }
+    }
+
+}
+
+.auth-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    list-style-type: none;
+    padding: 30px 0;
+    margin: 70px auto 0 auto;
+    width: 100%;
+
+    &__item {
+        border-radius: 50%;
+        padding: 10px;
+        cursor: pointer;
+
+        &:hover {
+            box-shadow: 0 0 14px orange;
+        }
+
+        &:focus {
+            box-shadow: 0 0 14px orange;
+        }
+    }
+
+    &__item + &__item {
+        margin-left: 50px;
+    }
+
+    &__icon {
+        width: 50px;
+    }
+}
+
+.google-item {
+    background: rgb(255, 255, 255);
+    background: linear-gradient(308deg, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 1) 50%);
+}
+
+.google-icon {
+    fill: rgb(241, 9, 40);
+}
+
+.twitter-item {
+    background: rgb(255, 255, 255);
+    background: linear-gradient(308deg, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 1) 50%);
+}
+
+.twitter-icon {
+    fill: orange;
+}
+
+.facebook-item {
+    background: rgb(255, 255, 255);
+    background: linear-gradient(308deg, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 1) 50%);
+}
+
+.facebook-icon {
+    fill: red;
+}
