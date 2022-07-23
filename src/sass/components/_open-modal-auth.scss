@@ -1,0 +1,15 @@
+.open-modal-auth {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.16;
+    padding: 4px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover{
+        background-color: orange;
+        color: white;
+        border-color: orange;
+        box-shadow: 0 0 16px rgba(255, 196, 0, 0.6);
+    }
+}

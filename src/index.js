@@ -6,3 +6,5 @@ import '../src/js/localstorage';
 import '../src/js/modal';
 import '../src/js/teamModal';
 import '../src/js/theme-choice';
+import '../src/js/authorization/modal-auth'
+import '../src/js/authorization/authorization'

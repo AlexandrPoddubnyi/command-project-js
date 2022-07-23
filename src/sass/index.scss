@@ -1,3 +1,9 @@
+@import './utils/normilize.scss';
+@import './utils/placeholders';
+@import './utils/hidden';
+@import './components/open-modal-auth';
+@import './components/authorization';
+@import './components/btn-close';
 @import './_common';
 @import './footer';
 @import './library';
