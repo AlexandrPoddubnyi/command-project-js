@@ -4,13 +4,14 @@
   left: 0;
   width: 100%;
   height: 100%;
-    z-index: 3;
+  z-index: 3;
   background-color: rgba(0, 0, 0, 0.2);
 }
 
 .modal-window__film {
   display: flex;
-  position: absolute;
+  position: relative;
+  overflow: scroll;
   top: 50%;
   left: 50%;
 
@@ -273,23 +274,23 @@
 .modal-window__close-icon {
   fill: #000000;
 }
-.modal-film-backdrop{
+.modal-film-backdrop {
   display: none;
-  }
-.filmModal-btn{
+}
+.filmModal-btn {
   position: absolute;
-    top:5;
-    right:5;
-    z-index: 2;
-    border: 1px solid #ff6b08;
-    background-color: transparent;
-    color: #ff6b08;
-    cursor: pointer;
-    font-size: 32px;
-    border-radius: 4px;
-    width: 41px;
-    &:hover{
-        color: #ffffff;
-        background-color: #ff6b08;
-        }
-    }
+  top: 5;
+  right: 5;
+  z-index: 2;
+  border: 1px solid #ff6b08;
+  background-color: transparent;
+  color: #ff6b08;
+  cursor: pointer;
+  font-size: 32px;
+  border-radius: 4px;
+  width: 41px;
+  &:hover {
+    color: #ffffff;
+    background-color: #ff6b08;
+  }
+}
