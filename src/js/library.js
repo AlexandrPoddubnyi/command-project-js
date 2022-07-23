@@ -60,7 +60,7 @@ function createCardsList(movie) {
           const movieGenresListArray = getMovieGenresListArray(genres);
           const movieGenresList = getGenres(movieGenresListArray).join(', ');
           return `
-            <li class="card-item">
+            <li class="card-item" tabindex="0">
             <img  class="card-item__img" src="${imgUrl}"
             alt="${title}" loading="lazy" data-id="${id}"/>
             <h2 class="card-item__title"  data-id="${id}">${slicedTitle}</h2>

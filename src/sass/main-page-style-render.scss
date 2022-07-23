@@ -35,16 +35,23 @@
 }
 
 .card-item {
-z-index: 0;
   margin-bottom: 20px;
   width: 280px;
   height: 443px;
     transition: transform 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  &:hover,:focus {
+  &:hover {
     transform: scale(1.03);
     transition: transform 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
   }
+    &:focus {
+      border: 1px solid steelblue;
+      border-radius: 4px;
+      outline: none;
+      transform: scale(1.03);
+      transition: transform 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+    }
 
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     width: 336px;

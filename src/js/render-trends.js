@@ -25,7 +25,7 @@ const slicedTitle = textSlicer(title, 30);
       imgUrl = 'https://i.postimg.cc/MTBLYYMP/poster-not-available.jpg';
       };
       return `
-      <li class="card-item">
+      <li class="card-item" tabindex="0">
        <img  class="card-item__img" src="${imgUrl}"
         alt="${title}" loading="lazy" data-id="${id}"
        
