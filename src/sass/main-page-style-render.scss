@@ -35,11 +35,16 @@
 }
 
 .card-item {
-  margin-left: auto;
-  margin-right: auto;
+z-index: 0;
   margin-bottom: 20px;
   width: 280px;
   height: 443px;
+    transition: transform 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  &:hover,:focus {
+    transform: scale(1.03);
+    transition: transform 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+  }
 
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     width: 336px;
@@ -66,6 +71,7 @@
     margin-right: 0px;
   }
 }
+
 
 .card-item__img {
   object-fit: cover;
@@ -122,17 +128,22 @@
   }
 }
 .vote-library {
-  padding: 3 11 3 11;
+  padding: 1 9 1 9;
   background: #ff6b01;
   border-radius: 5px;
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
-  width: 40px;
-  height: 20px;
+  width: 36px;
+  height: 16px;
   align-items: center;
   text-align: center;
   text-transform: uppercase;
-
-  color: #ffffff;
+color: #ffffff;
+@media screen and (min-width: 1280px) {
+  width: 40px;
+    height: 20px;
+    padding: 3 11 3 11;
+}
+  
 }

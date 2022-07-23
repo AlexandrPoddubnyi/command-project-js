@@ -77,7 +77,7 @@ export function renderOneFilm(...movie) {
     <ul class="modal-window__info--list">
       <li class="modal-window__info--content">
         <p class="modal-window__review--text">Vote / Votes</p>
-        <p class="modal-window__info--vote-votes"><span class="modal-window__data--vote">${vote_average}</span> / <span class="modal-window__data--votes">${vote_count}</span></p>
+        <p class="modal-window__info--vote-votes"><span class="modal-window__data--vote">${vote_average.toFixed(1)}</span> / <span class="modal-window__data--votes">${vote_count}</span></p>
       </li>
       <li class="modal-window__info--content">
         <p class="modal-window__review--text">Popularity</p>
