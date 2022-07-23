@@ -36,7 +36,8 @@ async function fetchByID(id) {
     return data;
   } catch (error) {}
 }
- function renderMainPage () { fetchTrendMovies().then(data => {
-  renderTrendCollection(data);
-});
+function renderMainPage() {
+  fetchTrendMovies().then(data => {
+    renderTrendCollection(data);
+  });
 }
