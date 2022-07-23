@@ -12,9 +12,15 @@
   display: flex;
   position: relative;
   overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
   top: 50%;
   left: 50%;
-
   background: #ffffff;
   transform: translate(-50%, -50%) scale(1);
   max-height: 100%;
