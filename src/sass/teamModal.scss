@@ -37,6 +37,8 @@
     font-size: 32px;
     border-radius: 4px;
     width: 41px;
+    transition: color, 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color, 250ms cubic-bezier(0.4, 0, 0.2, 1);
     &:hover{
         color: #ffffff;
         background-color: #ff6b08;
@@ -80,6 +82,9 @@
     position: relative;
     padding-top: 65%;
     z-index: 1;
+    &--oleg{
+        padding-top: 80%;
+        }
     img{
         border-top-left-radius: 4px;
         border-top-right-radius: 4px;
@@ -115,6 +120,7 @@
     width: 48px;
     height: 48px;
     fill: #ff6b08;
+    transition: fill, 250ms cubic-bezier(0.4, 0, 0.2, 1);
     &:last-child{
         margin-left: 8px;
         }
@@ -135,6 +141,7 @@
     font-size: 14px;
     line-height: calc( 16 / 14 );
     color: rgb(255, 107, 8, 0.45);
+    transition: color, 250ms cubic-bezier(0.4, 0, 0.2, 1);
     &:hover{
         color: #ff6b08;
         }
@@ -146,6 +153,8 @@
     border-radius: 4px;
     color: inherit;
     cursor: pointer;
+    transition: color, 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: border-color, 250ms cubic-bezier(0.4, 0, 0.2, 1);
     &:hover{
         border-color: #ff6b08;
         color: #ff6b08;
