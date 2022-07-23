@@ -8,6 +8,7 @@
       background-image: url(../images/header/header-mobile2x.jpg);
     }
 
+    height: 220px;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -32,6 +33,7 @@
 
     &__logo-text {
       display: none;
+      font-size: 30px;
     }
 
     &__list {
@@ -141,7 +143,6 @@
     &__logo-text {
       display: block;
       font-weight: 500;
-      font-size: 28px;
       line-height: 1.16;
       color: #ffffff;
     }
