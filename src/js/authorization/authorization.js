@@ -1,7 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider, signInWithPopup, TwitterAuthProvider, FacebookAuthProvider, signInWithEmailAndPassword, database, createUserWithEmailAndPassword } from "firebase/auth";
-import { getDatabase } from "firebase/database";
+import { getAuth, GoogleAuthProvider, signInWithPopup, TwitterAuthProvider, FacebookAuthProvider, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 import Notiflix from "notiflix";
 
 const googleLogin = document.querySelector("[google-auth]")
@@ -24,8 +23,6 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const database = getDatabase();
-
 const provider = new GoogleAuthProvider(app);
 const twitterProvider = new TwitterAuthProvider(app);
 const facebookProvider = new FacebookAuthProvider(app)
