@@ -1,11 +1,13 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider, signInWithPopup, TwitterAuthProvider, FacebookAuthProvider, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, signInWithPopup, TwitterAuthProvider, FacebookAuthProvider, signInWithEmailAndPassword, database, createUserWithEmailAndPassword } from "firebase/auth";
+import { getDatabase } from "firebase/database";
 import Notiflix from "notiflix";
 
 const googleLogin = document.querySelector("[google-auth]")
 const twitterLogin = document.querySelector("[twitter-auth]")
 const facebookLogin = document.querySelector("[facebook-auth]")
+const registerBtn = document.querySelector("[register-btn]")
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -21,12 +23,70 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const database = getDatabase();
 
 const provider = new GoogleAuthProvider(app);
 const twitterProvider = new TwitterAuthProvider(app);
 const facebookProvider = new FacebookAuthProvider(app)
 
 const auth = getAuth(app)
+
+function register() {
+  const email = document.getElementById('email').value
+  const password = document.getElementById('password').value
+
+  if (validate_email(email) == false || validate_password(password) == false) {
+    Notiflix.Notify.failure('Your password less than 6 symbols or your email isnt correct')
+    return
+  }
+  
+  //Notiflix.Notify.success(`Congratulations! Your account was created!`)
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in 
+      const user = userCredential.user;
+      Notiflix.Notify.success(`Congratulations! Your account was created!`)
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // ..
+    });
+}
+
+function validate_email(email) {
+  const expression = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+  
+  if (expression.test(email) == true)
+    return true
+  else
+      return false
+}
+
+function validate_password(password) {
+  if (password.length < 6)
+    return false
+  else 
+      return true
+}
+
+function validate_field(field) {
+  if (field == null) {
+    return false
+  }
+  else if (field.length < 1) {
+    return false
+  }
+  else {
+    return true
+  }
+}
+
+registerBtn.addEventListener('click', (event) => {
+  event.preventDefault()
+  register()
+})
 
 googleLogin.addEventListener('click', (event) => {
   event.preventDefault()
