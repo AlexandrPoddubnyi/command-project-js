@@ -46,7 +46,6 @@ function onSearchFormSubmit(e) {
   document.querySelector('.tui-pagination').innerHTML = '';
 
   const searchQuery = e.currentTarget.elements.searchQuery.value;
-
   checkQueryError(searchQuery);
   clearMoviesList();
 
@@ -55,6 +54,7 @@ function onSearchFormSubmit(e) {
 
 async function loadSearchMovies(searchQuery) {
   try {
+    showLoader();
     const searchMovies = await fetchBySearchMovies(searchQuery, 1);
 
     checkSearchError(searchMovies);
@@ -71,6 +71,7 @@ async function loadSearchMovies(searchQuery) {
       window.scrollTo({ top: 220, behavior: 'smooth' });
       loadMoreSearchMovies(searchQuery, currentPage);
     });
+    hideLoader();
   } catch (error) {
     console.log(error);
   }
@@ -83,6 +84,7 @@ async function loadMoreSearchMovies(searchQuery, currentPage) {
     clearPreviousResults();
     renderTrendCollection(searchMovies);
     console.log(searchMovies);
+    hideLoader();
   } catch (error) {
     console.log(error);
   }
