@@ -3,14 +3,21 @@ import { fetchByID } from './api-fetch';
 import { cards, renderOneFilm } from './render-trends';
 let movieId;
 cards.addEventListener('click', oneCardRender);
+cards.addEventListener('keydown', onEnterKeyDown);
 
+function onEnterKeyDown(e) {
+  if (e.key === 'Enter') {
+    oneCardRender(e);
+  }
+}
 
-
- export function oneCardRender(event) {
+export function oneCardRender(event) {
   if (
     !event.target.classList.contains('card-item__img') &&
-    !event.target.classList.contains('card-item__title')
+    !event.target.classList.contains('card-item__title') &&
+    !event.target.classList.contains('card-item')
   ) {
+    console.log('return');
     return;
   }
 
@@ -50,6 +57,6 @@ cards.addEventListener('click', oneCardRender);
         queuedBtn.innerHTML = 'ADD TO QUEUE';
       }
     });
+    document.querySelector('.filmModal-btn').focus();
   });
-   
 }
