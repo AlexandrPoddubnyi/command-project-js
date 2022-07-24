@@ -1,6 +1,6 @@
 // | <span class="card-item__rating">${vote_average.toFixed(1)}</span>
 import { renderPoster } from './api-keys';
-import { getGenres,textSlicer } from './utils';
+import { getGenres, textSlicer } from './utils';
 export const cards = document.querySelector('.card-list');
 
 export function renderTrendCollection(movie) {
@@ -25,8 +25,8 @@ const slicedTitle = textSlicer(title, 30);
       imgUrl = 'https://i.postimg.cc/MTBLYYMP/poster-not-available.jpg';
       };
       return `
-      <li class="card-item" tabindex="0">
-       <img  class="card-item__img" src="${imgUrl}"
+      <li  class="card-item">
+       <img  tabindex="0" class="card-item__img" src="${imgUrl}"
         alt="${title}" loading="lazy" data-id="${id}"
        
         
@@ -39,6 +39,7 @@ const slicedTitle = textSlicer(title, 30);
     .join('');
  
   cards.insertAdjacentHTML('beforeend', markup);
+
 }
 
 
