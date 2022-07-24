@@ -11,7 +11,7 @@ function onEnterKeyDown(e) {
   }
 }
 
-function oneCardRender(event) {
+export function oneCardRender(event) {
   if (
     !event.target.classList.contains('card-item__img') &&
     !event.target.classList.contains('card-item__title') &&

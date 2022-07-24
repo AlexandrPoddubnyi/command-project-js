@@ -20,13 +20,11 @@ export function renderTrendCollection(movie) {
       }
       return `
       <li class="card-item" tabindex="0" data-id="${id}">
-       <img  class="card-item__img" src="${imgUrl}"
-        alt="${title}" loading="lazy" data-id="${id}"
-       
-        
-   "/><div class="movie-meta">
+      <img  class="card-item__img" src="${imgUrl}"
+         alt="${title}" loading="lazy" data-id="${id}"/>
+      <div class="movie-meta">
          <h2 class="card-item__title"  data-id="${id}">${slicedTitle}</h2>
-          <p class="card-item__desc"> ${movieGenresList} | ${realeaseYear} </p>
+         <p class="card-item__desc"> ${movieGenresList} | ${realeaseYear} </p>
       </div></li>
       `;
     })
