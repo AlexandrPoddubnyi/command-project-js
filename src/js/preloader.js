@@ -18,6 +18,7 @@ export function showLoader() {
 
 export function hideLoader() {
   const preloader = document.getElementById('page-preload');
+  console.log(preloader);
   if (!preloader.classList.contains('done')) {
     preloader.classList.add('done');
     preloader.classList.remove('preloader');
