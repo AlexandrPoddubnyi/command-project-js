@@ -1,31 +1,25 @@
 // | <span class="card-item__rating">${vote_average.toFixed(1)}</span>
 import { renderPoster } from './api-keys';
-import { getGenres,textSlicer } from './utils';
+import { getGenres, textSlicer } from './utils';
 export const cards = document.querySelector('.card-list');
 
 export function renderTrendCollection(movie) {
   const markup = movie.results
     .map(movie => {
-      const {
-        id,
-        title,
-        poster_path,
-        genre_ids,
-        vote_average,
-        release_date,
-      } = movie;
+      const { id, title, poster_path, genre_ids, vote_average, release_date } =
+        movie;
       let realeaseYear = '';
       let imgUrl = renderPoster + poster_path;
       if (typeof release_date !== 'undefined') {
         realeaseYear = release_date.slice(0, 4);
-      };
-const slicedTitle = textSlicer(title, 30);
+      }
+      const slicedTitle = textSlicer(title, 30);
       const movieGenresList = getGenres(genre_ids).join(', ');
       if (poster_path === null) {
-      imgUrl = 'https://i.postimg.cc/MTBLYYMP/poster-not-available.jpg';
-      };
+        imgUrl = 'https://i.postimg.cc/MTBLYYMP/poster-not-available.jpg';
+      }
       return `
-      <li class="card-item" tabindex="0">
+      <li class="card-item" tabindex="0" data-id="${id}">
        <img  class="card-item__img" src="${imgUrl}"
         alt="${title}" loading="lazy" data-id="${id}"
        
@@ -37,35 +31,35 @@ const slicedTitle = textSlicer(title, 30);
       `;
     })
     .join('');
- 
+
   cards.insertAdjacentHTML('beforeend', markup);
 }
-
 
 const filmBackdropEl = document.querySelector('.modal-film-backdrop');
 const bodyElement = document.querySelector('body');
 export function renderOneFilm(...movie) {
-  const markupOneFilm = movie.map(movie => {
-    const {
-      id,
-      title,
-      poster_path,
-      genres,
-      overview,
-      backdrop_path,
-      budget,
-      homepage,
-      vote_average,
-      vote_count,
-      original_title,
-      popularity,
-      release_date,
-    } = movie;
-    let imgUrl = renderPoster + poster_path;
-    if (poster_path === null) {
-      imgUrl = 'https://i.postimg.cc/MTBLYYMP/poster-not-available.jpg';
-      };
-    return `
+  const markupOneFilm = movie
+    .map(movie => {
+      const {
+        id,
+        title,
+        poster_path,
+        genres,
+        overview,
+        backdrop_path,
+        budget,
+        homepage,
+        vote_average,
+        vote_count,
+        original_title,
+        popularity,
+        release_date,
+      } = movie;
+      let imgUrl = renderPoster + poster_path;
+      if (poster_path === null) {
+        imgUrl = 'https://i.postimg.cc/MTBLYYMP/poster-not-available.jpg';
+      }
+      return `
 <div class="modal-window__film">
   <div class="modal-window__image">
     <img src="${imgUrl}" 
@@ -78,13 +72,15 @@ export function renderOneFilm(...movie) {
     <ul class="modal-window__info--list">
       <li class="modal-window__info--content">
         <p class="modal-window__review--text">Vote / Votes</p>
-        <p class="modal-window__info--vote-votes"><span class="modal-window__data--vote">${vote_average.toFixed(1)}</span> / <span class="modal-window__data--votes">${vote_count}</span></p>
+        <p class="modal-window__info--vote-votes"><span class="modal-window__data--vote">${vote_average.toFixed(
+          1
+        )}</span> / <span class="modal-window__data--votes">${vote_count}</span></p>
       </li>
       <li class="modal-window__info--content">
         <p class="modal-window__review--text">Popularity</p>
         <p class="modal-window__data--popul">${popularity
-        .toString()
-        .slice(0, -4)}</p>
+          .toString()
+          .slice(0, -4)}</p>
       </li>
       <li class="modal-window__info--content">
         <p class="modal-window__review--text">Original Title</p>
@@ -92,7 +88,9 @@ export function renderOneFilm(...movie) {
       </li>
       <li class="modal-window__info--content">
         <p class="modal-window__review--text">Genre</p>
-        <p class="modal-window__data--genre">${genres.map(gen => gen.name).join(', ')}</p>
+        <p class="modal-window__data--genre">${genres
+          .map(gen => gen.name)
+          .join(', ')}</p>
       </li>
     </ul>
   </div>
@@ -108,8 +106,9 @@ export function renderOneFilm(...movie) {
   </button>
 </div>
 `;
-  }).join('');
- 
+    })
+    .join('');
+
   filmBackdropEl.insertAdjacentHTML('afterbegin', markupOneFilm);
   const filmCloseBtn = document.querySelector('.filmModal-btn');
   filmBackdropEl.style.display = 'block';
@@ -117,22 +116,21 @@ export function renderOneFilm(...movie) {
   filmBackdropEl.addEventListener('click', onBackdropClose);
   filmCloseBtn.addEventListener('click', onFilmModalClose);
   window.addEventListener('keydown', onEscClose);
-
 }
-function onFilmModalClose(e){
-  filmBackdropEl.innerHTML ='';
+function onFilmModalClose(e) {
+  filmBackdropEl.innerHTML = '';
   bodyElement.style.overflow = 'scroll';
   filmBackdropEl.style.display = 'none';
-  filmBackdropEl.removeEventListener('click', onBackdropClose, false );
+  filmBackdropEl.removeEventListener('click', onBackdropClose, false);
   window.removeEventListener('keydown', onEscClose, false);
 }
-function onBackdropClose(e){
-  if(e.target === filmBackdropEl){
+function onBackdropClose(e) {
+  if (e.target === filmBackdropEl) {
     onFilmModalClose();
   }
 }
-function onEscClose(e){
-  if(e.key === 'Escape'){
+function onEscClose(e) {
+  if (e.key === 'Escape') {
     onFilmModalClose();
   }
 }
