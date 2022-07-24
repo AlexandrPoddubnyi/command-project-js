@@ -1,8 +1,11 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithRedirect, GoogleAuthProvider, getRedirectResult, signInWithPopup } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, signInWithPopup, TwitterAuthProvider, FacebookAuthProvider } from "firebase/auth";
+import Notiflix from "notiflix";
 
 const googleLogin = document.querySelector("[google-auth]")
+const twitterLogin = document.querySelector("[twitter-auth]")
+const facebookLogin = document.querySelector("[facebook-auth]")
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -20,34 +23,13 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const provider = new GoogleAuthProvider(app);
+const twitterProvider = new TwitterAuthProvider(app);
+const facebookProvider = new FacebookAuthProvider(app)
 
 const auth = getAuth(app)
 
 googleLogin.addEventListener('click', (event) => {
   event.preventDefault()
-
-  /*signInWithRedirect(auth, provider)
-  
-  getRedirectResult(auth)
-  .then((result) => {
-    // This gives you a Google Access Token. You can use it to access Google APIs.
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
-
-    // The signed-in user info.
-    const user = result.user;
-    
-    successAuth(user.email)
-  }).catch((error) => {
-    // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // The email of the user's account used.
-    const email = error.customData.email;
-    // The AuthCredential type that was used.
-    const credential = GoogleAuthProvider.credentialFromError(error);
-    // ...
-  });*/
 
   signInWithPopup(auth, provider)
   .then((result) => {
@@ -56,7 +38,7 @@ googleLogin.addEventListener('click', (event) => {
     const token = credential.accessToken;
     // The signed-in user info.
     const user = result.user;
-    alert(`Thanks for your authorization ${user.email}`)
+    Notiflix.Notify.success(`Thanks for your authorization ${user.email}`)
     document.querySelector("[auth-modal]").classList.add('is-hidden')
     //successAuth(user.email)
     // ...
@@ -64,10 +46,67 @@ googleLogin.addEventListener('click', (event) => {
     // Handle Errors here.
     const errorCode = error.code;
     const errorMessage = error.message;
+    Notiflix.Notify.failure(errorMessage)
     // The email of the user's account used.
     const email = error.customData.email;
     // The AuthCredential type that was used.
     const credential = GoogleAuthProvider.credentialFromError(error);
+    // ...
+  });
+})
+
+twitterLogin.addEventListener('click', (event) => {
+  event.preventDefault()
+
+  signInWithPopup(auth, twitterProvider)
+  .then((result) => {
+    // This gives you a the Twitter OAuth 1.0 Access Token and Secret.
+    // You can use these server side with your app's credentials to access the Twitter API.
+    const credential = TwitterAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    const secret = credential.secret;
+
+    // The signed-in user info.
+    const user = result.user;
+
+    Notiflix.Notify.success(`Thanks for your authorization ${user.displayName}`)
+    // ...
+  }).catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    Notiflix.Notify.failure(errorMessage)
+    // The email of the user's account used.
+    const email = error.customData.email;
+    // The AuthCredential type that was used.
+    const credential = TwitterAuthProvider.credentialFromError(error);
+    // ...
+  });
+})
+
+facebookLogin.addEventListener('click', (event) => {
+  event.preventDefault()
+
+  signInWithPopup(auth, facebookProvider)
+  .then((result) => {
+    // The signed-in user info.
+    const user = result.user;
+
+    // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+    const credential = FacebookAuthProvider.credentialFromResult(result);
+    const accessToken = credential.accessToken;
+    Notiflix.Notify.success(`Thanks for your authorization ${user.displayName}`)
+    // ...
+  })
+  .catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.customData.email;
+    // The AuthCredential type that was used.
+    const credential = FacebookAuthProvider.credentialFromError(error);
+    Notiflix.Notify.failure(errorMessage)
     // ...
   });
 })
