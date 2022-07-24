@@ -8,6 +8,7 @@ const googleLogin = document.querySelector("[google-auth]")
 const twitterLogin = document.querySelector("[twitter-auth]")
 const facebookLogin = document.querySelector("[facebook-auth]")
 const registerBtn = document.querySelector("[register-btn]")
+const signInBtn = document.querySelector("[sign-in-btn]")
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -46,6 +47,8 @@ function register() {
       // Signed in 
       const user = userCredential.user;
       Notiflix.Notify.success(`Congratulations! Your account was created!`)
+      document.getElementById('email').value = ""
+      document.getElementById('password').value = ""
       // ...
     })
     .catch((error) => {
@@ -86,6 +89,25 @@ function validate_field(field) {
 registerBtn.addEventListener('click', (event) => {
   event.preventDefault()
   register()
+})
+
+signInBtn.addEventListener('click', (event) => {
+  const email = document.getElementById('email').value
+  const password = document.getElementById('password').value
+
+  signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    document.getElementById('email').value = ""
+    document.getElementById('password').value = ""
+    Notiflix.Notify.success(`Congratulations! You was succesfully sign in!`)
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
 })
 
 googleLogin.addEventListener('click', (event) => {
