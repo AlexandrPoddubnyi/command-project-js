@@ -13,11 +13,12 @@
     @content;
   }
 }
-.dark-theme .team-modal{
-    background-color: #333333;
-    }
-.dark-theme .team__element{
-    background-color: rgb(117, 117, 117, 0.3);}
+.dark-theme .team-modal {
+  background-color: #333333;
+}
+.dark-theme .team__element {
+  background-color: rgb(117, 117, 117, 0.3);
+}
 .team-modal-wraper {
   position: fixed;
   top: 0;
@@ -28,6 +29,7 @@
   display: none;
   justify-content: center;
   align-items: center;
+  z-index: 3;
   background-color: rgb(117, 117, 117, 0.3);
 }
 .teamModal-btn {

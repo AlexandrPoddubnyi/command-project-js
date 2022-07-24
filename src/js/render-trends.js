@@ -64,6 +64,9 @@ export function renderOneFilm(...movie) {
    alt="${title}" loading="lazy" data-id="${id}" >
 
   </div>
+  <button class="filmModal-btn" type="button">
+      X
+  </button>
   <div class="modal-window__content">
   <h2 class="modal-window__film--title" data-id="${id}">${title}</h2>
   <div class="modal-window__info">
@@ -99,9 +102,6 @@ export function renderOneFilm(...movie) {
   <button class="modal-window__btn--queue" type="button">ADD TO QUEUE</button>
   </div>
   </div>
-  <button class="filmModal-btn" type="button">
-      X
-  </button>
 </div>
 `;
     })
