@@ -1,40 +1,40 @@
 import { renderPoster } from './api-keys';
-import { getGenres,textSlicer } from './utils';
+import { getGenres, textSlicer } from './utils';
 export const cards = document.querySelector('.card-list');
 const btnWatched = document.querySelector('.watched');
 const btnQueue = document.querySelector('.queue');
- const watchedListFromStorage = localStorage.getItem('watchedList');
-export const arrayWatchedListFromStorage = JSON.parse(watchedListFromStorage);
- const queueListFromStorage = localStorage.getItem('queueList');
-  const arrayQueueListFromStorage = JSON.parse(queueListFromStorage);
 
 preStepsBeforeWatched()
 btnWatched.addEventListener('click', preStepsBeforeWatched);
 btnQueue.addEventListener('click', preStepsBeforeQueue);
 
 function preStepsBeforeWatched() {
-    btnWatched.classList.add("header-library__btn__is-active");
-    btnQueue.classList.remove("header-library__btn__is-active");
-    cards.innerHTML = '';
-    if (watchedListFromStorage === '[]' || watchedListFromStorage === null) {
-        const name = '<div class="card-text-no-film"><p>No watched movies added</p></div>';
-        cards.innerHTML = name;
-    } else {
-        createCardsList(arrayWatchedListFromStorage);
-    }
-}
+  const watchedListFromStorage = localStorage.getItem('watchedList');
+  const arrayWatchedListFromStorage = JSON.parse(watchedListFromStorage);
+  btnWatched.classList.add("header-library__btn__is-active");
+  btnQueue.classList.remove("header-library__btn__is-active");
+  cards.innerHTML = '';
+  if (watchedListFromStorage === '[]' || watchedListFromStorage === null) {
+    const name = '<div class="card-text-no-film"><p>No watched movies added</p></div>';
+    cards.innerHTML = name;
+  } else {
+    createCardsList(arrayWatchedListFromStorage);
+  };
+};
 
 function preStepsBeforeQueue() {
-    btnWatched.classList.remove("header-library__btn__is-active");
-    btnQueue.classList.add("header-library__btn__is-active");
-    cards.innerHTML = '';
-    if (queueListFromStorage === '[]' || queueListFromStorage === null) {
-        const name = '<p class="card-text-no-film">No movie added to queue</p>';
-        cards.innerHTML = name;
-    } else {
-        createCardsList(arrayQueueListFromStorage);
-    }
-}
+  const queueListFromStorage = localStorage.getItem('queueList');
+  const arrayQueueListFromStorage = JSON.parse(queueListFromStorage);
+  btnWatched.classList.remove("header-library__btn__is-active");
+  btnQueue.classList.add("header-library__btn__is-active");
+  cards.innerHTML = '';
+  if (queueListFromStorage === '[]' || queueListFromStorage === null) {
+    const name = '<p class="card-text-no-film">No movie added to queue</p>';
+    cards.innerHTML = name;
+  } else {
+    createCardsList(arrayQueueListFromStorage);
+  };
+};
 
 function createCardsList(movie) {
     const markup = movie
@@ -81,4 +81,22 @@ function getMovieGenresListArray(genresIdsListArray) {
         array.push(genresIdsListArray[i].id);
     };
     return array;
+};
+
+// ------------------ Функція рендеру сторінки при зміні додаванні/видаленні фільмів у Модальному вікні фільму --------------------- 
+
+const modal = document.querySelector('.modal-film-backdrop');
+modal.addEventListener('click', reloadAfterModalClose)
+
+function reloadAfterModalClose() {
+  const watchedListFromStorageModal = localStorage.getItem('watchedList');
+  const arrayWatchedListFromStorageModal = JSON.parse(watchedListFromStorageModal);
+  const queueListFromStorageModal = localStorage.getItem('queueList');
+  const arrayQueueListFromStorageModal = JSON.parse(queueListFromStorageModal);
+  
+  if (btnWatched.classList.value.includes(`header-library__btn__is-active`) && arrayWatchedListFromStorageModal.length !== cards.children.length) {
+    preStepsBeforeWatched();
+  } else if (btnQueue.classList.value.includes(`header-library__btn__is-active`) && arrayQueueListFromStorageModal.length !== cards.children.length) {
+    preStepsBeforeQueue();
+  };
 };
