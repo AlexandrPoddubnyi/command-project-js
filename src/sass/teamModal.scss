@@ -13,6 +13,11 @@
     @content;
   }
 }
+.dark-theme .team-modal{
+    background-color: #333333;
+    }
+.dark-theme .team__element{
+    background-color: rgb(117, 117, 117, 0.3);}
 .team-modal-wraper {
   position: fixed;
   top: 0;
@@ -56,9 +61,6 @@
     display: none;
   }
 }
-.dark-theme .team-modal {
-  background-color: #333;
-}
 
 .team__title {
   font-size: 32px;
@@ -85,7 +87,7 @@
   border-top-right-radius: 4px;
   width: 100%;
   position: relative;
-  padding-top: 65%;
+  padding-top: 95%;
   z-index: 1;
   &--oleg {
     padding-top: 80%;
