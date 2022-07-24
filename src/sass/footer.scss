@@ -2,7 +2,7 @@
   color: #545454;
   background-color: #f7f7f7;
   box-shadow: 0 -5px 2px 0px #00000005;
-  margin-top: 40px;
+  margin-top: auto;
 }
 
 .footer-container {
@@ -111,9 +111,6 @@
 }
 
 @media screen and (min-width: 768px) {
-  .footer {
-    margin-top: 60px;
-  }
   .footer-text {
     padding-top: 30px;
     padding-bottom: 30px;

@@ -2,9 +2,12 @@
   display: block;
   position: fixed;
 
-  bottom: 25px;
-  right: 25px;
-
+  right: 10px;
+  bottom: 45px;
+  @media screen and(min-width: 768px) {
+    right: 25px;
+    bottom: 25px;
+  }
   z-index: 10;
   padding: 0;
   outline: none;
