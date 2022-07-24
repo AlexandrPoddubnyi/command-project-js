@@ -57,6 +57,6 @@ export function oneCardRender(event) {
         queuedBtn.innerHTML = 'ADD TO QUEUE';
       }
     });
-    document.querySelector('.filmModal-btn').focus();
+    document.querySelector('.modal-window__btn--watched').focus();
   });
 }
