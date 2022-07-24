@@ -89,9 +89,14 @@ const modal = document.querySelector('.modal-film-backdrop');
 modal.addEventListener('click', reloadAfterModalClose)
 
 function reloadAfterModalClose() {
-  if (btnWatched.classList.value.includes(`header-library__btn__is-active`)) {
+  const watchedListFromStorageModal = localStorage.getItem('watchedList');
+  const arrayWatchedListFromStorageModal = JSON.parse(watchedListFromStorageModal);
+  const queueListFromStorageModal = localStorage.getItem('queueList');
+  const arrayQueueListFromStorageModal = JSON.parse(queueListFromStorageModal);
+  
+  if (btnWatched.classList.value.includes(`header-library__btn__is-active`) && arrayWatchedListFromStorageModal.length !== cards.children.length) {
     preStepsBeforeWatched();
-  } else if (btnQueue.classList.value.includes(`header-library__btn__is-active`)) {
+  } else if (btnQueue.classList.value.includes(`header-library__btn__is-active`) && arrayQueueListFromStorageModal.length !== cards.children.length) {
     preStepsBeforeQueue();
   };
 };
