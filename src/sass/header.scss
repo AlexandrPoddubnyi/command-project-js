@@ -222,7 +222,6 @@ a:active {
   color: inherit;
 }
 
-
 //container
 .container {
   width: 100%;
@@ -316,7 +315,7 @@ body.dark-theme {
   justify-content: flex-end;
   padding: 16px 35px;
   position: absolute;
-  right: 0;
+  right: auto;
   top: 160px;
 }
 .theme-switch {
