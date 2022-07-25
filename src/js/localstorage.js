@@ -56,6 +56,10 @@ class LocalStorageInstance {
   isIncluded(id) {
     return this.items.find(item => item.id === id) ? true : false;
   }
+  //Повернути об'єкт зі списку по id
+  getItem(id) {
+    return this.items[this.items.findIndex(item => item.id === id)] || false;
+  }
 }
 
 class LocalStorageFlag {
@@ -144,6 +148,7 @@ export const LsTheme = new LocalStorageFlag('theme');
 
 // console.log(LsCurrent.setItems([obj1, obj2]));
 // console.log(LsCurrent.getItems());
+// console.log(LsCurrent.getItem(745376));
 
 //obj1 id507086
 //obj2 id438148
