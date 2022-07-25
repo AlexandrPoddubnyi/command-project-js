@@ -1,5 +1,5 @@
 import { renderPoster } from './api-keys';
-import { getGenres, textSlicer } from './utils';
+import { getGenres,getRealeseYear,getMappedGenres, textSlicer } from './utils';
 export const cards = document.querySelector('.card-list');
 const btnWatched = document.querySelector('.watched');
 const btnQueue = document.querySelector('.queue');
@@ -45,15 +45,15 @@ function createCardsList(movie) {
         title,
         poster_path,
         genres,
-        overview,
         vote_average,
         release_date,
       } = movie;
       let realeaseYear = '';
-      let imgUrl = renderPoster + poster_path;
-      if (typeof release_date !== 'undefined') {
-        realeaseYear = release_date.slice(0, 4);
+      let yearOfRealease = getRealeseYear(realeaseYear, release_date);
+      if (release_date === '') {
+        yearOfRealease = 'Year:N/A';
       }
+      let imgUrl = renderPoster + poster_path;
       if (poster_path === null) {
         imgUrl = 'https://i.postimg.cc/MTBLYYMP/poster-not-available.jpg';
       }
@@ -68,7 +68,7 @@ function createCardsList(movie) {
             <p class="card-item__desc"> ${movieGenresList.slice(
               0,
               27
-            )} | ${realeaseYear} | <span class="vote-library">${vote_average.toFixed(
+            )} | ${yearOfRealease} | <span class="vote-library">${vote_average.toFixed(
         1
       )}</span> </p>
             </li>

@@ -1,30 +1,32 @@
-// | <span class="card-item__rating">${vote_average.toFixed(1)}</span>
+
 import { renderPoster } from './api-keys';
-import { getGenres, textSlicer } from './utils';
+import { getGenres, getRealeseYear, getMappedGenres, textSlicer } from './utils';
 export const cards = document.querySelector('.card-list');
 
 export function renderTrendCollection(movie) {
-  const markup = movie.results
+ const markup = movie.results
     .map(movie => {
-      const { id, title, poster_path, genre_ids, vote_average, release_date } =
+     const { id, title, poster_path, genre_ids, release_date } =
         movie;
-      let realeaseYear = '';
       let imgUrl = renderPoster + poster_path;
-      if (typeof release_date !== 'undefined') {
-        realeaseYear = release_date.slice(0, 4);
+       if (poster_path === null) {
+         imgUrl = 'https://i.postimg.cc/MTBLYYMP/poster-not-available.jpg';
+       }
+      let realeaseYear = '';
+      let yearOfRealease = getRealeseYear(realeaseYear, release_date);
+      if (release_date === '') {
+        yearOfRealease = 'Year:N/A';
       }
       const slicedTitle = textSlicer(title, 30);
       const movieGenresList = getGenres(genre_ids).join(', ');
-      if (poster_path === null) {
-        imgUrl = 'https://i.postimg.cc/MTBLYYMP/poster-not-available.jpg';
-      }
+     
       return `
       <li class="card-item" tabindex="0" data-id="${id}">
       <img  class="card-item__img" src="${imgUrl}"
          alt="${title}" loading="lazy" data-id="${id}"/>
       <div class="movie-meta">
          <h2 class="card-item__title"  data-id="${id}">${slicedTitle}</h2>
-         <p class="card-item__desc"> ${movieGenresList} | ${realeaseYear} </p>
+         <p class="card-item__desc"> ${movieGenresList} | ${yearOfRealease} </p>
       </div></li>
       `;
     })
@@ -44,9 +46,6 @@ export function renderOneFilm(...movie) {
         poster_path,
         genres,
         overview,
-        backdrop_path,
-        budget,
-        homepage,
         vote_average,
         vote_count,
         original_title,
@@ -56,7 +55,13 @@ export function renderOneFilm(...movie) {
       let imgUrl = renderPoster + poster_path;
       if (poster_path === null) {
         imgUrl = 'https://i.postimg.cc/MTBLYYMP/poster-not-available.jpg';
-      }
+      };
+      const mappedGenres = getMappedGenres(genres)
+      let popular = parseInt(popularity);
+      if (popularity < 20 ) {
+        popular = 'Not available';
+      };
+
       return `
 <div class="modal-window__film">
   <div class="modal-window__image">
@@ -79,9 +84,7 @@ export function renderOneFilm(...movie) {
       </li>
       <li class="modal-window__info--content">
         <p class="modal-window__review--text">Popularity</p>
-        <p class="modal-window__data--popul">${popularity
-          .toString()
-          .slice(0, -4)}</p>
+        <p class="modal-window__data--popul">${popular}</p>
       </li>
       <li class="modal-window__info--content">
         <p class="modal-window__review--text">Original Title</p>
@@ -89,9 +92,7 @@ export function renderOneFilm(...movie) {
       </li>
       <li class="modal-window__info--content">
         <p class="modal-window__review--text">Genre</p>
-        <p class="modal-window__data--genre">${genres
-          .map(gen => gen.name)
-          .join(', ')}</p>
+        <p class="modal-window__data--genre">${mappedGenres}</p>
       </li>
     </ul>
   </div>
