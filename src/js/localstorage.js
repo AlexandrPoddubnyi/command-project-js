@@ -4,7 +4,6 @@ class LocalStorageInstance {
   constructor(listName) {
     this.listName = listName;
     this.items = this.getItems() || [];
-    // console.log(this.items);
   }
   // Зберегти масив об'єктів списку
   setItems(arr) {
@@ -28,7 +27,7 @@ class LocalStorageInstance {
   }
   // Додати об'єкт до списку
   addItem(obj) {
-    this.items.push(obj);
+    this.items.unshift(obj);
 
     try {
       localStorage.setItem(`${this.listName}`, JSON.stringify(this.items));
