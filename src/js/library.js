@@ -50,7 +50,7 @@ function createCardsList(movie) {
       } = movie;
       let realeaseYear = '';
       let yearOfRealease = getRealeseYear(realeaseYear, release_date);
-      if (release_date === '') {
+      if (release_date === '' || release_date === undefined) {
         yearOfRealease = 'Year:N/A';
       }
       let imgUrl = renderPoster + poster_path;
