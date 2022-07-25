@@ -222,7 +222,6 @@ a:active {
   color: inherit;
 }
 
-
 //container
 .container {
   width: 100%;
@@ -268,7 +267,9 @@ a:active {
   }
 }
 .header__search-error.is-hidden {
-  display: none;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
 }
 
 //theme-choice

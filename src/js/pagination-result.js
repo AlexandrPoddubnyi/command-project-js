@@ -2,6 +2,7 @@ import { fetchTrendMovies, fetchBySearchMovies } from './api-fetch';
 import createPagination from './pagination';
 import { showLoader, hideLoader } from './preloader';
 import { renderTrendCollection } from './render-trends';
+import { renderMainPage } from './api-fetch';
 
 const moviesList = document.querySelector('.card-list');
 const searchForm = document.getElementById('search-form');
@@ -43,14 +44,23 @@ searchForm.addEventListener('submit', onSearchFormSubmit);
 
 function onSearchFormSubmit(e) {
   e.preventDefault();
-  document.querySelector('.tui-pagination').innerHTML = '';
+  // document.querySelector('.tui-pagination').innerHTML = '';
 
   const searchQuery = e.currentTarget.elements.searchQuery.value;
 
   checkQueryError(searchQuery);
-  clearMoviesList();
 
-  loadSearchMovies(searchQuery);
+  if (searchQuery !== '') {
+    clearMoviesList();
+    loadSearchMovies(searchQuery);
+    } else {
+      renderMainPage();
+    }
+
+  // checkQueryError(searchQuery);
+  // clearMoviesList();
+
+  // loadSearchMovies(searchQuery);
 }
 
 async function loadSearchMovies(searchQuery) {
@@ -100,13 +110,16 @@ function clearMoviesList() {
 function checkSearchError(movies) {
   if (!movies.results.length) {
     searchError.classList.remove('is-hidden');
-    document.querySelector('.tui-pagination').style.display = 'none';
-  } else {
-    document.querySelector('.tui-pagination').style.display = 'block';
+    // document.querySelector('.tui-pagination').style.display = 'none';
   }
+  // else {
+  //   document.querySelector('.tui-pagination').style.display = 'block';
+  // }
   setTimeout(() => {
     searchError.classList.add('is-hidden');
   }, 5000);
+  // renderMainPage();
+  // onPageLoad();
 }
 
 function checkQueryError(searchQuery) {
@@ -115,5 +128,6 @@ function checkQueryError(searchQuery) {
     setTimeout(() => {
       searchError.classList.add('is-hidden');
     }, 5000);
+    renderMainPage();
   }
 }
