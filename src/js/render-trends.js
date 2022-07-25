@@ -14,7 +14,7 @@ export function renderTrendCollection(movie) {
        }
       let realeaseYear = '';
       let yearOfRealease = getRealeseYear(realeaseYear, release_date);
-      if (release_date === '') {
+      if (release_date === '' || release_date ===  undefined) {
         yearOfRealease = 'Year:N/A';
       }
       const slicedTitle = textSlicer(title, 30);

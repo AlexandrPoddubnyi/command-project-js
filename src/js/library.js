@@ -50,7 +50,7 @@ function createCardsList(movie) {
       } = movie;
       let realeaseYear = '';
       let yearOfRealease = getRealeseYear(realeaseYear, release_date);
-      if (release_date === '') {
+      if (release_date === '' || release_date === undefined) {
         yearOfRealease = 'Year:N/A';
       }
       let imgUrl = renderPoster + poster_path;
@@ -93,22 +93,17 @@ const modal = document.querySelector('.modal-film-backdrop');
 modal.addEventListener('click', reloadAfterModalClose);
 
 function reloadAfterModalClose() {
-  const watchedListFromStorageModal = localStorage.getItem('watchedList');
-  const arrayWatchedListFromStorageModal = JSON.parse(
-    watchedListFromStorageModal
-  );
-  const queueListFromStorageModal = localStorage.getItem('queueList');
-  const arrayQueueListFromStorageModal = JSON.parse(queueListFromStorageModal);
-
-  if (
-    btnWatched.classList.value.includes(`header-library__btn__is-active`) &&
-    arrayWatchedListFromStorageModal.length !== cards.children.length
-  ) {
-    preStepsBeforeWatched();
-  } else if (
-    btnQueue.classList.value.includes(`header-library__btn__is-active`) &&
-    arrayQueueListFromStorageModal.length !== cards.children.length
-  ) {
-    preStepsBeforeQueue();
-  }
-}
+  if (btnWatched.classList.value.includes(`header-library__btn__is-active`)) {
+    const watchedListFromStorageModal = localStorage.getItem('watchedList');
+    const arrayWatchedListFromStorageModal = JSON.parse(watchedListFromStorageModal);
+    if (cards.children.length === 0 || cards.children.length === 1 || arrayWatchedListFromStorageModal.length !== cards.children.length) {
+      preStepsBeforeWatched();
+    };
+  } else if (btnQueue.classList.value.includes(`header-library__btn__is-active`)) {
+    const queueListFromStorageModal = localStorage.getItem('queueList');
+    const arrayQueueListFromStorageModal = JSON.parse(queueListFromStorageModal);
+    if (cards.children.length === 0 || cards.children.length === 1 || arrayQueueListFromStorageModal.length !== cards.children.length) {
+      preStepsBeforeQueue();
+    };
+  };
+};
