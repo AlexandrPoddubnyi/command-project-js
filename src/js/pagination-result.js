@@ -16,11 +16,6 @@ async function onPageLoad() {
     showLoader();
     const movies = await fetchTrendMovies();
     LsCurrent.setItems(movies.results);
-    const films = LsCurrent.getItems();
-    console.log(films);
-    // console.log(movies);
-    // renderTrendCollection(movies);
-    renderTrendCollection(LsCurrent.getItems());
 
     const instance = createPagination();
     instance.setItemsPerPage(20);
@@ -40,13 +35,8 @@ async function loadMoreTrendMovies(currentPage) {
     showLoader();
     const movies = await fetchTrendMovies(currentPage);
     LsCurrent.setItems(movies.results);
-
-    const films = LsCurrent.getItems();
-    console.log(films);
     clearPreviousResults();
-    renderTrendCollection(LsCurrent.getItems());
-
-    // renderTrendCollection(movies);
+    renderTrendCollection(movies);
     hideLoader();
   } catch (error) {
     console.log(error);
@@ -67,7 +57,6 @@ function onSearchFormSubmit(e) {
     setTimeout(() => { searchError.classList.add('is-hidden'); }, 5000);
     return;
   } else {
-    clearMoviesList();
     loadSearchMovies(searchQuery);
   }
 }
@@ -76,9 +65,15 @@ async function loadSearchMovies(searchQuery) {
     showLoader();
     const searchMovies = await fetchBySearchMovies(searchQuery, 1);
 
-    checkSearchError(searchMovies.results);
-
-    renderTrendCollection(searchMovies.results);
+    if (searchMovies.results.length === 0) {
+      hideLoader();
+      searchError.classList.remove('is-hidden');
+      setTimeout(() => { searchError.classList.add('is-hidden'); }, 5000);
+      return; 
+    }
+    
+    clearMoviesList();
+    renderTrendCollection(searchMovies);
 
     const instance = createPagination();
     instance.setItemsPerPage(20);
@@ -101,7 +96,7 @@ async function loadMoreSearchMovies(searchQuery, currentPage) {
     showLoader();
     const searchMovies = await fetchBySearchMovies(searchQuery, currentPage);
     clearPreviousResults();
-    renderTrendCollection(searchMovies.results);
+    renderTrendCollection(searchMovies);
     hideLoader();
   } catch (error) {
     console.log(error);
@@ -115,14 +110,4 @@ function clearPreviousResults() {
 }
 function clearMoviesList() {
   moviesList.innerHTML = '';
-}
-
-function checkSearchError(results) {
-  if (!results.length) {
-    searchError.classList.remove('is-hidden');
-    setTimeout(() => { searchError.classList.add('is-hidden'); }, 5000);
-    renderTrendCollection(LsCurrent.getItems());
-    // return;
-    // onPageLoad();
-  } 
 }
