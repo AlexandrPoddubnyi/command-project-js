@@ -2,6 +2,7 @@ import { fetchTrendMovies, fetchBySearchMovies } from './api-fetch';
 import createPagination from './pagination';
 import { showLoader, hideLoader } from './preloader';
 import { renderTrendCollection } from './render-trends';
+import { LsCurrent } from './localstorage';
 
 const moviesList = document.querySelector('.card-list');
 const searchForm = document.getElementById('search-form');
@@ -13,6 +14,7 @@ window.addEventListener('load', onPageLoad);
 async function onPageLoad() {
   try {
     const movies = await fetchTrendMovies();
+    LsCurrent.setItems(movies.results);
     const instance = createPagination();
     instance.setItemsPerPage(20);
     instance.setTotalItems(movies.total_results);
@@ -29,6 +31,7 @@ async function loadMoreTrendMovies(currentPage) {
   try {
     showLoader();
     const movies = await fetchTrendMovies(currentPage);
+    LsCurrent.setItems(movies.results);
     clearPreviousResults();
     renderTrendCollection(movies);
     hideLoader();
