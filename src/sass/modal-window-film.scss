@@ -212,10 +212,20 @@
 }
 
 .modal-window__film--overview {
+  max-height: 100px;
   margin-bottom: 20px;
   font-weight: 500;
   font-size: 12px;
   line-height: 20px;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 390px;
+  }
 }
 
 .modal-window__buttons {
@@ -226,7 +236,7 @@
 
 .modal-window__btn--watched {
   margin-right: 15px;
-  width: 136px;
+  width: 110px;
   height: 44px;
   color: #000000;
   border-radius: 5px;
@@ -243,10 +253,16 @@
     box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
     color: #ffffff;
   }
+  @media screen and (min-width: 768px) {
+    width: 125px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 136px;
+  }
 }
 
 .modal-window__btn--queue {
-  width: 136px;
+  width: 110px;
   height: 44px;
   color: #000000;
   border-radius: 5px;
@@ -264,6 +280,12 @@
     background: #ff6b08;
     box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
     color: #ffffff;
+  }
+  @media screen and (min-width: 768px) {
+    width: 125px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 136px;
   }
 }
 
