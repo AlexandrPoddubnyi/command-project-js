@@ -88,7 +88,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  &__item + &__item {
+  &__item + &__item + &__item {
     margin-left: 40px;
   }
 }
@@ -100,7 +100,7 @@
   align-items: center;
 
   &__item + &__item {
-    margin-left: 40px;
+    margin-left: 20px;
   }
 }
 
@@ -192,11 +192,10 @@
 }
 
 .toolbar__lib {
+  display: flex;
     justify-content: flex-end;
-    padding: 16px 0px;
-    display: flex;
+    padding: 16px 35px;
     position: absolute;
+    right: auto;
     top: 180px;
-    right: 0;
-    z-index: 2;
 }

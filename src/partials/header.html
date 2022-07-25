@@ -11,14 +11,24 @@
         <nav class="header__nav">
           <ul class="header__list">
             <li class="header__item">
-              <a href="/src/index.html" class="header__link header__link--current">Home</a>
+              <a
+                href="/src/index.html"
+                class="header__link header__link--current"
+                >Home</a
+              >
             </li>
             <li class="header__item">
               <a href="/src/library.html" class="header__link">My library</a>
             </li>
+            <button
+              type="button"
+              class="open-modal-auth header__item"
+              auth-modal-open
+            >
+              SIGN IN
+            </button>
           </ul>
         </nav>
-        <button type="button" class="open-modal-auth" auth-modal-open>SIGN IN</button>
       </div>
       <div class="header__center">
         <form id="search-form" class="header__form">
