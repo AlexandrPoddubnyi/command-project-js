@@ -2,7 +2,7 @@ import { fetchTrendMovies, fetchBySearchMovies } from './api-fetch';
 import createPagination from './pagination';
 import { showLoader, hideLoader } from './preloader';
 import { renderTrendCollection } from './render-trends';
-import { renderMainPage } from './api-fetch';
+import { LsCurrent } from './localstorage';
 
 const moviesList = document.querySelector('.card-list');
 const searchForm = document.getElementById('search-form');
@@ -13,7 +13,15 @@ window.addEventListener('load', onPageLoad);
 //  Налаштування пагінації при завантаженні трендових фільмів (головної сторінки)
 async function onPageLoad() {
   try {
+    showLoader();
     const movies = await fetchTrendMovies();
+    LsCurrent.setItems(movies.results);
+    const films = LsCurrent.getItems();
+    console.log(films);
+    // console.log(movies);
+    // renderTrendCollection(movies);
+    renderTrendCollection(LsCurrent.getItems());
+
     const instance = createPagination();
     instance.setItemsPerPage(20);
     instance.setTotalItems(movies.total_results);
@@ -23,6 +31,7 @@ async function onPageLoad() {
       window.scrollTo({ top: 220, behavior: 'smooth' });
       loadMoreTrendMovies(currentPage);
     });
+    hideLoader();
   } catch (error) {}
 }
 
@@ -30,8 +39,14 @@ async function loadMoreTrendMovies(currentPage) {
   try {
     showLoader();
     const movies = await fetchTrendMovies(currentPage);
+    LsCurrent.setItems(movies.results);
+
+    const films = LsCurrent.getItems();
+    console.log(films);
     clearPreviousResults();
-    renderTrendCollection(movies);
+    renderTrendCollection(LsCurrent.getItems());
+
+    // renderTrendCollection(movies);
     hideLoader();
   } catch (error) {
     console.log(error);
@@ -44,32 +59,26 @@ searchForm.addEventListener('submit', onSearchFormSubmit);
 
 function onSearchFormSubmit(e) {
   e.preventDefault();
-  // document.querySelector('.tui-pagination').innerHTML = '';
 
   const searchQuery = e.currentTarget.elements.searchQuery.value;
 
-  checkQueryError(searchQuery);
-
-  if (searchQuery !== '') {
+  if (searchQuery.trim() === '') {
+    searchError.classList.remove('is-hidden');
+    setTimeout(() => { searchError.classList.add('is-hidden'); }, 5000);
+    return;
+  } else {
     clearMoviesList();
     loadSearchMovies(searchQuery);
-    } else {
-      renderMainPage();
-    }
-
-  // checkQueryError(searchQuery);
-  // clearMoviesList();
-
-  // loadSearchMovies(searchQuery);
+  }
 }
-
 async function loadSearchMovies(searchQuery) {
   try {
+    showLoader();
     const searchMovies = await fetchBySearchMovies(searchQuery, 1);
 
-    checkSearchError(searchMovies);
+    checkSearchError(searchMovies.results);
 
-    renderTrendCollection(searchMovies);
+    renderTrendCollection(searchMovies.results);
 
     const instance = createPagination();
     instance.setItemsPerPage(20);
@@ -81,6 +90,7 @@ async function loadSearchMovies(searchQuery) {
       window.scrollTo({ top: 220, behavior: 'smooth' });
       loadMoreSearchMovies(searchQuery, currentPage);
     });
+    hideLoader();
   } catch (error) {
     console.log(error);
   }
@@ -91,8 +101,8 @@ async function loadMoreSearchMovies(searchQuery, currentPage) {
     showLoader();
     const searchMovies = await fetchBySearchMovies(searchQuery, currentPage);
     clearPreviousResults();
-    renderTrendCollection(searchMovies);
-    console.log(searchMovies);
+    renderTrendCollection(searchMovies.results);
+    hideLoader();
   } catch (error) {
     console.log(error);
   }
@@ -107,27 +117,12 @@ function clearMoviesList() {
   moviesList.innerHTML = '';
 }
 
-function checkSearchError(movies) {
-  if (!movies.results.length) {
+function checkSearchError(results) {
+  if (!results.length) {
     searchError.classList.remove('is-hidden');
-    // document.querySelector('.tui-pagination').style.display = 'none';
-  }
-  // else {
-  //   document.querySelector('.tui-pagination').style.display = 'block';
-  // }
-  setTimeout(() => {
-    searchError.classList.add('is-hidden');
-  }, 5000);
-  // renderMainPage();
-  // onPageLoad();
-}
-
-function checkQueryError(searchQuery) {
-  if (searchQuery.trim() === '') {
-    searchError.classList.remove('is-hidden');
-    setTimeout(() => {
-      searchError.classList.add('is-hidden');
-    }, 5000);
-    renderMainPage();
-  }
+    setTimeout(() => { searchError.classList.add('is-hidden'); }, 5000);
+    renderTrendCollection(LsCurrent.getItems());
+    // return;
+    // onPageLoad();
+  } 
 }

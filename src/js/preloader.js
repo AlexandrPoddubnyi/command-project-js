@@ -1,9 +1,9 @@
-window.addEventListener('DOMContentLoaded', onWindowLoad());
+window.addEventListener('DOMContentLoaded', onWindowLoad);
 
 function onWindowLoad() {
-  window.onload = () => {
-    showLoader();
-    setTimeout(hideLoader, 1000);
+  showLoader();
+  document.body.onload = () => {
+    hideLoader();
   };
 }
 

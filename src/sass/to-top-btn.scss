@@ -4,11 +4,11 @@
 
   right: 10px;
   bottom: 45px;
-  @media screen and(min-width: 768px) {
+  @media screen and (min-width: 768px) {
     right: 25px;
     bottom: 25px;
   }
-  z-index: 10;
+  z-index: 9;
   padding: 0;
   outline: none;
   border: none;
@@ -25,7 +25,7 @@
 }
 .to-top-btn__icon {
   fill: currentColor;
-  @media screen and(min-width: 768px) {
+  @media screen and (min-width: 768px) {
     width: 70px;
     height: 70px;
   }
