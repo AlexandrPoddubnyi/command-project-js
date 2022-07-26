@@ -1,9 +1,13 @@
 @import './utils/normilize.scss';
 @import './utils/placeholders';
 @import './utils/hidden';
+@import './utils/backdrop';
+@import './utils/modal';
 @import './components/open-modal-auth';
 @import './components/authorization';
 @import './components/btn-close';
+@import './components/personal_cabinet';
+@import './components/cabinet-modal';
 @import './_common';
 @import './footer';
 @import './library';

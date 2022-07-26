@@ -2,6 +2,8 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup, TwitterAuthProvider, FacebookAuthProvider, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 import Notiflix from "notiflix";
+import createPersonalCabinet from "../personal_cabinet/create-personal-cabinet";
+import modalFill from "../personal_cabinet/cabinet-modal";
 
 const googleLogin = document.querySelector("[google-auth]")
 const twitterLogin = document.querySelector("[twitter-auth]")
@@ -94,11 +96,18 @@ signInBtn.addEventListener('click', (event) => {
 
   signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
+    
     // Signed in 
     const user = userCredential.user;
     document.getElementById('email').value = ""
     document.getElementById('password').value = ""
+    createPersonalCabinet(user.email[0].toUpperCase())
+    //modalFill(user.email[0].toUpperCase(), user.email)
+    document.querySelector('[auth-modal-open]').remove()
+    document.querySelector("[auth-modal]").classList.add('is-hidden')
     Notiflix.Notify.success(`Congratulations! You was succesfully sign in!`)
+    modalFill(user.email[0].toUpperCase(), user.email)
+
     // ...
   })
   .catch((error) => {
@@ -119,6 +128,8 @@ googleLogin.addEventListener('click', (event) => {
     const user = result.user;
     Notiflix.Notify.success(`Thanks for your authorization ${user.email}`)
     document.querySelector("[auth-modal]").classList.add('is-hidden')
+    createPersonalCabinet(user.email[0].toUpperCase())
+    document.querySelector('[auth-modal-open]').remove()
     //successAuth(user.email)
     // ...
   }).catch((error) => {
@@ -149,6 +160,9 @@ twitterLogin.addEventListener('click', (event) => {
     const user = result.user;
 
     Notiflix.Notify.success(`Thanks for your authorization ${user.displayName}`)
+
+    createPersonalCabinet()
+    document.querySelector('[auth-modal-open]').remove()
     // ...
   }).catch((error) => {
     // Handle Errors here.
@@ -175,6 +189,9 @@ facebookLogin.addEventListener('click', (event) => {
     const credential = FacebookAuthProvider.credentialFromResult(result);
     const accessToken = credential.accessToken;
     Notiflix.Notify.success(`Thanks for your authorization ${user.displayName}`)
+
+    createPersonalCabinet()
+    document.querySelector('[auth-modal-open]').remove()
     // ...
   })
   .catch((error) => {

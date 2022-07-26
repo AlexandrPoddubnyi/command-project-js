@@ -8,3 +8,6 @@ import '../src/js/teamModal';
 import '../src/js/theme-choice';
 import '../src/js/authorization/modal-auth';
 import '../src/js/authorization/authorization';
+import '../src/js/personal_cabinet/create-personal-cabinet'
+import '../src/js/personal_cabinet/cabinet-open'
+import '../src/js/personal_cabinet/cabinet-modal'
