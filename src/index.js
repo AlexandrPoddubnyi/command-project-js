@@ -14,3 +14,5 @@ import '../src/js/personal_cabinet/cabinet-modal'
 import '../src/js/authorization/storeAuth'
 import '../src/js/authorization/authStatus'
 import '../src/js/personal_cabinet/sign-out'
+import '../src/js/authorization/autorized-only-main'
+

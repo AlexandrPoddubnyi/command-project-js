@@ -109,7 +109,8 @@ signInBtn.addEventListener('click', (event) => {
     Notiflix.Notify.success(`Congratulations! You was succesfully sign in!`)
     modalFill(user.email[0].toUpperCase(), user.email)
     storeAuth(user.email)
-    location.href=location.href;
+    location.href = location.href
+
     // ...
   })
   .catch((error) => {

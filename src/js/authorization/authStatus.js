@@ -5,7 +5,6 @@ function authStatus() {
     
     const settings = JSON.parse(localStorage.getItem('auth'))
     if (settings.auth === true) {
-        console.log('+')
         createPersonalCabinet(settings.email[0].toUpperCase())
 
         document.querySelector('[auth-modal-open]').remove()
