@@ -267,7 +267,9 @@ a:active {
   }
 }
 .header__search-error.is-hidden {
-  display: none;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
 }
 
 //theme-choice

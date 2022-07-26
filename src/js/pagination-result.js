@@ -13,8 +13,10 @@ window.addEventListener('load', onPageLoad);
 //  Налаштування пагінації при завантаженні трендових фільмів (головної сторінки)
 async function onPageLoad() {
   try {
+    showLoader();
     const movies = await fetchTrendMovies();
     LsCurrent.setItems(movies.results);
+
     const instance = createPagination();
     instance.setItemsPerPage(20);
     instance.setTotalItems(movies.total_results);
@@ -24,6 +26,7 @@ async function onPageLoad() {
       window.scrollTo({ top: 220, behavior: 'smooth' });
       loadMoreTrendMovies(currentPage);
     });
+    hideLoader();
   } catch (error) {}
 }
 
@@ -46,22 +49,30 @@ searchForm.addEventListener('submit', onSearchFormSubmit);
 
 function onSearchFormSubmit(e) {
   e.preventDefault();
-  document.querySelector('.tui-pagination').innerHTML = '';
 
   const searchQuery = e.currentTarget.elements.searchQuery.value;
-  checkQueryError(searchQuery);
-  clearMoviesList();
 
-  loadSearchMovies(searchQuery);
+  if (searchQuery.trim() === '') {
+    searchError.classList.remove('is-hidden');
+    setTimeout(() => { searchError.classList.add('is-hidden'); }, 5000);
+    return;
+  } else {
+    loadSearchMovies(searchQuery);
+  }
 }
-
 async function loadSearchMovies(searchQuery) {
   try {
     showLoader();
     const searchMovies = await fetchBySearchMovies(searchQuery, 1);
 
-    checkSearchError(searchMovies);
-
+    if (searchMovies.results.length === 0) {
+      hideLoader();
+      searchError.classList.remove('is-hidden');
+      setTimeout(() => { searchError.classList.add('is-hidden'); }, 5000);
+      return; 
+    }
+    
+    clearMoviesList();
     renderTrendCollection(searchMovies);
 
     const instance = createPagination();
@@ -86,7 +97,6 @@ async function loadMoreSearchMovies(searchQuery, currentPage) {
     const searchMovies = await fetchBySearchMovies(searchQuery, currentPage);
     clearPreviousResults();
     renderTrendCollection(searchMovies);
-    console.log(searchMovies);
     hideLoader();
   } catch (error) {
     console.log(error);
@@ -100,25 +110,4 @@ function clearPreviousResults() {
 }
 function clearMoviesList() {
   moviesList.innerHTML = '';
-}
-
-function checkSearchError(movies) {
-  if (!movies.results.length) {
-    searchError.classList.remove('is-hidden');
-    document.querySelector('.tui-pagination').style.display = 'none';
-  } else {
-    document.querySelector('.tui-pagination').style.display = 'block';
-  }
-  setTimeout(() => {
-    searchError.classList.add('is-hidden');
-  }, 5000);
-}
-
-function checkQueryError(searchQuery) {
-  if (searchQuery.trim() === '') {
-    searchError.classList.remove('is-hidden');
-    setTimeout(() => {
-      searchError.classList.add('is-hidden');
-    }, 5000);
-  }
 }
