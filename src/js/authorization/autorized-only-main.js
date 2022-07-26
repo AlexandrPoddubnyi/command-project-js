@@ -2,8 +2,11 @@ import Notiflix from "notiflix";
 
 function mainAuthorizedOnly() {
   const libLink = document.querySelector('[lib-link]')
-  
-  if (JSON.parse(localStorage.getItem('auth')).auth != true) {
+  if (localStorage.getItem('auth') === null) {
+    libLink.classList.add('pointer-none')
+    console.log('+')
+  }
+  else if (JSON.parse(localStorage.getItem('auth')).auth != true) {
     libLink.classList.add('pointer-none')
     console.log('+')
   }
@@ -15,7 +18,10 @@ function mainAuthorizedOnly() {
 mainAuthorizedOnly()
 
 document.querySelector('[lib-item]').addEventListener('click', (event) => {
-    if (JSON.parse(localStorage.getItem('auth')).auth != true) {
+  if (localStorage.getItem('auth') === null) {
+    Notiflix.Notify.warning(`Library for authorized users only`)
+  }
+  else if (JSON.parse(localStorage.getItem('auth')).auth != true) {
     Notiflix.Notify.warning(`Library for authorized users only`)
   }
 })
