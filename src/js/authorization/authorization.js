@@ -110,6 +110,7 @@ signInBtn.addEventListener('click', (event) => {
     modalFill(user.email[0].toUpperCase(), user.email)
     storeAuth(user.email)
     location.href = location.href
+
     // ...
   })
   .catch((error) => {
