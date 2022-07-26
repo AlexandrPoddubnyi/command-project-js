@@ -13,7 +13,7 @@ function onEnterKeyDown(e) {
 }
 
 export function oneCardRender(event) {
-  showLoader();
+  
   if (
     !event.target.classList.contains('card-item__img') &&
     !event.target.classList.contains('card-item__title') &&
@@ -22,7 +22,7 @@ export function oneCardRender(event) {
     console.log('return');
     return;
   }
-
+showLoader();
   event.preventDefault();
   movieId = event.target.dataset.id;
   fetchByID(movieId).then(data => {

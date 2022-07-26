@@ -38,6 +38,7 @@
 
     &__list {
       display: flex;
+      align-items: baseline;
     }
 
     &__item + &__item {
@@ -63,7 +64,7 @@
         display: block;
         width: 100%;
         height: 3px;
-        background-color: #ff001b;
+        background-color: #ff6b08;
       }
     }
 
@@ -319,6 +320,10 @@ body.dark-theme {
   position: absolute;
   right: auto;
   top: 160px;
+
+  @media screen and (max-width: 767px) {
+    padding: 16px 18px;
+  }
 }
 .theme-switch {
   display: flex;
