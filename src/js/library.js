@@ -4,10 +4,6 @@ export const cards = document.querySelector('.card-list');
 const btnWatched = document.querySelector('.watched');
 const btnQueue = document.querySelector('.queue');
 
-preStepsBeforeWatched();
-btnWatched.addEventListener('click', preStepsBeforeWatched);
-btnQueue.addEventListener('click', preStepsBeforeQueue);
-
 function preStepsBeforeWatched() {
   const watchedListFromStorage = localStorage.getItem('watchedList');
   const arrayWatchedListFromStorage = JSON.parse(watchedListFromStorage);
@@ -89,9 +85,6 @@ function getMovieGenresListArray(genresIdsListArray) {
 
 // ------------------ Функція рендеру сторінки при зміні додаванні/видаленні фільмів у Модальному вікні фільму ---------------------
 
-const modal = document.querySelector('.modal-film-backdrop');
-modal.addEventListener('click', reloadAfterModalClose);
-
 function reloadAfterModalClose() {
   if (btnWatched.classList.value.includes(`header-library__btn__is-active`)) {
     const watchedListFromStorageModal = localStorage.getItem('watchedList');
@@ -107,3 +100,38 @@ function reloadAfterModalClose() {
     };
   };
 };
+
+//---Added by Denis for authorized, don't delete please ;) --//
+function authorizedOnly() {
+  const watchedBtn = document.querySelector('[watch-button]')
+  const queueBtn = document.querySelector('[queue-button]')
+
+  watchedBtn.setAttribute('disabled', '') 
+  queueBtn.setAttribute('disabled','')
+}
+
+function visualization(func) {
+  if (JSON.parse(localStorage.getItem('auth')).auth != true) {
+    authorizedOnly()
+    return
+  }
+  else {
+    func();
+  }
+}
+
+visualization(preStepsBeforeWatched) 
+
+//---Added by Denis for authorized, don't delete please ;) --//
+const modal = document.querySelector('.modal-film-backdrop');
+modal.addEventListener('click', reloadAfterModalClose);
+
+//---Changed by Denis for authorized, don't change please ;) --//
+btnWatched.addEventListener('click', (event) => {
+  console.log('+')
+  visualization(preStepsBeforeWatched) 
+});
+btnQueue.addEventListener('click', (event) => {
+  console.log('+')
+  visualization(preStepsBeforeQueue)
+});

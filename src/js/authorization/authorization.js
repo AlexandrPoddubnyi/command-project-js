@@ -4,6 +4,7 @@ import { getAuth, GoogleAuthProvider, signInWithPopup, TwitterAuthProvider, Face
 import Notiflix from "notiflix";
 import createPersonalCabinet from "../personal_cabinet/create-personal-cabinet";
 import modalFill from "../personal_cabinet/cabinet-modal";
+import storeAuth from "./storeAuth";
 
 const googleLogin = document.querySelector("[google-auth]")
 const twitterLogin = document.querySelector("[twitter-auth]")
@@ -102,12 +103,13 @@ signInBtn.addEventListener('click', (event) => {
     document.getElementById('email').value = ""
     document.getElementById('password').value = ""
     createPersonalCabinet(user.email[0].toUpperCase())
-    //modalFill(user.email[0].toUpperCase(), user.email)
+
     document.querySelector('[auth-modal-open]').remove()
     document.querySelector("[auth-modal]").classList.add('is-hidden')
     Notiflix.Notify.success(`Congratulations! You was succesfully sign in!`)
     modalFill(user.email[0].toUpperCase(), user.email)
-
+    storeAuth(user.email)
+    location.href = location.href
     // ...
   })
   .catch((error) => {

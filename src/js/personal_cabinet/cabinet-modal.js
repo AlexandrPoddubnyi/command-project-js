@@ -16,6 +16,7 @@ export default function modalFill(emailFirst, email) {
 
     const signOut = document.createElement('button')
     signOut.classList.add('cabinet-modal__out')
+    //signOut.setAttribute('type','submit')
     signOut.innerHTML = 'SIGN OUT'
 
     cabinet.appendChild(emblem)
