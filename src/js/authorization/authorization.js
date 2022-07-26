@@ -116,6 +116,7 @@ signInBtn.addEventListener('click', (event) => {
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
+    Notiflix.Notify.failure(errorMessage)
   });
 })
 
