@@ -89,7 +89,7 @@
   justify-content: center;
   align-items: center;
   &__item + &__item + &__item {
-    margin-left: 40px;
+    margin-left: 20px;
   }
 }
 
@@ -194,8 +194,12 @@
 .toolbar__lib {
   display: flex;
   justify-content: flex-end;
-  padding: 16px 35px;
+  padding: 0px 65px;
   position: absolute;
   right: auto;
   top: 180px;
+
+  @media screen and (max-width: 767px) {
+    padding: 13px 35px;
+  }
 }
