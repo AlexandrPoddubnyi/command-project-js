@@ -5,8 +5,10 @@
     modal: document.querySelector("[auth-modal]"),
   };
 
-  refs.openModalBtn.addEventListener("click", toggleModal);
-  refs.closeModalBtn.addEventListener("click", toggleModal);
+  if (document.querySelector("[auth-modal-open]") != null) {
+   refs.openModalBtn.addEventListener("click", toggleModal);
+   refs.closeModalBtn.addEventListener("click", toggleModal);   
+  }
 
   function toggleModal() {
     refs.modal.classList.toggle("is-hidden");
