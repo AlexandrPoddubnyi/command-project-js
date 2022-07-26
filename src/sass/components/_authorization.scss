@@ -1,153 +1,148 @@
 .backdrop {
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    background-color: rgba(0, 0, 0, 0.22);
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.22);
 }
 
 .auth {
-    display: flex;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
 .auth-form {
-    width: 600px;
-    margin: auto;
-    background-color: black;
-    border-radius: 6px;
-    padding: 40px;
-    box-shadow: 0 0 16px rgba(255, 196, 0, 0.6);
+  width: 600px;
+  margin: auto;
+  background-color: lightgrey;
+  border-radius: 6px;
+  padding: 40px;
+  box-shadow: 0 0 16px #ff6b08;
 
-    &__welcome {
-        font-size: 48px;
-        color: red;
-        font-weight: 600;
-        text-align: center;
-        border-bottom: 1px solid orange;
-    }
+  &__welcome {
+    font-size: 48px;
+    color: #333;
+    font-weight: 600;
+    text-align: center;
+  }
 }
 
 .sign-up {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  margin: 50px auto 0;
+
+  &__title {
+    font-size: 30px;
+    color: #333;
+    text-align: center;
+    margin: 0 0 30px 0;
+  }
+
+  &__input {
+    font-size: 18px;
+    border: 1px solid rgba(161, 161, 161, 05);
+    border-radius: 4px;
+    padding: 10px 6px;
+    outline: none;
+
+    &:hover {
+      border: 1px solid #ff6b08;
+      box-shadow: 0 0 14px #ff6b08;
+    }
+
+    &:focus {
+      border: 1px solid #ff6b08;
+      box-shadow: 0 0 14px #ff6b08;
+    }
+  }
+
+  &__input + &__input {
+    margin-top: 30px;
+  }
+
+  &__buttons {
     display: flex;
-    flex-direction: column;
-    width: 500px;
-    margin: 50px auto 0;
+    flex-direction: row;
+  }
 
-    &__title {
-        font-size: 30px;
-        color: red;
-        text-align: center;
-        margin: 0 0 30px 0;
+  &__btn {
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    width: 150px;
+    border: none;
+    border-radius: 4px;
+    background-color: #ff6b08;
+    padding: 12px 6px;
+    margin: 40px auto 0 auto;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 0 14px #ff6b08;
     }
 
-    &__input {
-        font-size: 18px;
-        border: 1px solid rgba(161, 161, 161, 05);
-        border-radius: 4px;
-        padding: 10px 6px;
-        outline: none;
-
-        &:hover {
-            border: 1px solid orange;
-            box-shadow: 0 0 14px orange;
-        }
-
-        &:focus {
-            border: 1px solid orange;
-            box-shadow: 0 0 14px orange;
-        }
+    &:focus {
+      box-shadow: 0 0 14px #ff6b08;
     }
-
-    &__input + &__input {
-        margin-top: 30px;
-    }
-
-    &__buttons{
-        display: flex;
-        flex-direction: row;
-    }
-
-    &__btn {
-        font-size: 20px;
-        font-weight: 600;
-        color: white;
-        width: 150px;
-        border: none;
-        border-radius: 4px;
-        background-color: orange;
-        padding: 12px 6px;
-        margin: 40px auto 0 auto;
-        cursor: pointer;
-
-        &:hover {
-            box-shadow: 0 0 14px orange;
-        }
-
-        &:focus {
-            box-shadow: 0 0 14px orange;
-        }
-    }
-
+  }
 }
 
 .auth-list {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    list-style-type: none;
-    padding: 30px 0;
-    margin: 70px auto 0 auto;
-    width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  list-style-type: none;
+  padding: 30px 0;
+  margin: 70px auto 0 auto;
+  width: 100%;
 
-    &__item {
-        border-radius: 50%;
-        padding: 10px;
-        cursor: pointer;
+  &__item {
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
 
-        &:hover {
-            box-shadow: 0 0 14px orange;
-        }
-
-        &:focus {
-            box-shadow: 0 0 14px orange;
-        }
+    &:hover {
+      box-shadow: 0 0 14px #ff6b08;
     }
 
-    &__item + &__item {
-        margin-left: 50px;
+    &:focus {
+      box-shadow: 0 0 14px #ff6b08;
     }
+  }
 
-    &__icon {
-        width: 50px;
-    }
+  &__item + &__item {
+    margin-left: 50px;
+  }
+
+  &__icon {
+    width: 50px;
+  }
 }
 
 .google-item {
-    background: rgb(255, 255, 255);
-    background: linear-gradient(308deg, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 1) 50%);
+  background: #ffffff;
 }
 
 .google-icon {
-    fill: rgb(241, 9, 40);
+  fill: #3b9e1d;
 }
 
 .twitter-item {
-    background: rgb(255, 255, 255);
-    background: linear-gradient(308deg, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 1) 50%);
+  background: #ffffff;
 }
 
 .twitter-icon {
-    fill: orange;
+  fill: #00a2ff;
 }
 
 .facebook-item {
-    background: rgb(255, 255, 255);
-    background: linear-gradient(308deg, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 1) 50%);
+  background: #008cff;
 }
 
 .facebook-icon {
-    fill: red;
+  fill: #ffffff;
 }
