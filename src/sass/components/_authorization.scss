@@ -13,14 +13,14 @@
   justify-content: center;
 }
 
-.dark-theme .auth-form {
-  background: #333;
-}
-
 .auth-form {
   width: 600px;
   margin: auto;
   background-color: lightgrey;
+  background-image: url(../images/multiplex-16-9-2.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   border-radius: 6px;
   padding: 40px;
   box-shadow: 0 0 16px #ff6b08;
@@ -61,7 +61,7 @@
 
   &__input {
     font-size: 18px;
-    border: 1px solid rgba(161, 161, 161, 05);
+    border: 1px solid #ff6b08;
     border-radius: 4px;
     padding: 10px 6px;
     outline: none;
