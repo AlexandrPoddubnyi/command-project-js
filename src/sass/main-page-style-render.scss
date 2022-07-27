@@ -40,20 +40,20 @@
   margin-bottom: 20px;
   width: 280px;
   height: 443px;
-    transition: transform 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   &:hover {
     transform: scale(1.03);
     transition: transform 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
   }
-    &:focus {
-      border: 1px solid steelblue;
-      border-radius: 4px;
-      outline: none;
-      transform: scale(1.03);
-      transition: transform 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      cursor: pointer;
-    }
+  &:focus {
+    border: 1px solid steelblue;
+    border-radius: 4px;
+    outline: none;
+    transform: scale(1.03);
+    transition: transform 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+  }
 
   @media screen and (min-width: 768px) and (max-width: 1279px) {
     margin-left: inherit;
@@ -64,8 +64,8 @@
   }
 
   @media screen and (min-width: 1280px) {
-      margin-left: inherit;
-        margin-right: inherit;
+    margin-left: inherit;
+    margin-right: inherit;
     width: 395px;
     height: 634px;
     margin-right: 16px;
@@ -84,7 +84,6 @@
     margin-right: 0px;
   }
 }
-
 
 .card-item__img {
   object-fit: cover;
@@ -110,17 +109,11 @@
   font-size: 12px;
   font-weight: 500;
   line-height: 16px;
-
-  // max-width: 245px;
-  // overflow: hidden;
   text-transform: uppercase;
   color: #000000;
 
   @media screen and (min-width: 1280px) {
     font-size: 20px;
-    // max-width: 280px;
-    // max-height: 25px;
-    // overflow: hidden;
     line-height: 24px;
   }
 }
@@ -152,11 +145,10 @@
   align-items: center;
   text-align: center;
   text-transform: uppercase;
-color: #ffffff;
-@media screen and (min-width: 1280px) {
-  width: 40px;
+  color: #ffffff;
+  @media screen and (min-width: 1280px) {
+    width: 40px;
     height: 20px;
     padding: 3 11 3 11;
-}
-  
+  }
 }
